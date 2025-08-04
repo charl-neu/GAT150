@@ -1,5 +1,6 @@
 #include "Renderer.h"
 #include <iostream>
+#include "Texture.h"
 
 
 namespace viper {
@@ -71,6 +72,20 @@ namespace viper {
     {
         SDL_RenderPoint(m_renderer, x, y);
     }
+
+    void Renderer::DrawTexture(Texture* texture, float x, float y)
+    {
+		vec2 size = texture->GetSize();
+
+        SDL_FRect destRect;
+
+        destRect.x = x;
+        destRect.y = y;
+        destRect.w = size.x;
+        destRect.h = size.y;
+        
+        SDL_RenderTexture(m_renderer, texture->m_texture, NULL, &destRect);
+	}
 
     void Renderer::Clear()
     {

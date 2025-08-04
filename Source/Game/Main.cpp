@@ -15,6 +15,7 @@
 #include "game/GameGame.h"
 #include "Core/File.h"
 #include "Renderer/Particle System.h"
+#include "Renderer/Texture.h"
 
 
 #include <SDL3/SDL.h>
@@ -49,6 +50,9 @@ int main(int argc, char* argv[]) {
     SDL_Event e;
     bool quit = false;
 
+    std::shared_ptr<viper::Texture> texture = std::make_shared<viper::Texture>();
+    texture->Load("Assets/vacationmemoriesbad.png", RENDERER);
+     
     //main loop
     while (!quit) {
 		
@@ -74,10 +78,12 @@ int main(int argc, char* argv[]) {
 
 
 		viper::vec3 color{ 1, 1, 1 };
-        
+
         RENDERER.SetColor(0.0f, 0.0f, 0.0f);
         RENDERER.Clear();
 
+		RENDERER.DrawTexture(texture.get(), 10, 10);
+        
 		game->Draw(RENDERER);
 
         for(auto& star : stars)
