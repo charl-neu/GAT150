@@ -1,10 +1,11 @@
 #pragma once
+#include "Resources/Resource.h"
 #include <SDL3/SDL_ttf.h>
 #include <string>
 
 namespace viper {
 
-	class Font {
+	class Font : public Resource{
 	public:
 		Font() = default;
 		~Font();

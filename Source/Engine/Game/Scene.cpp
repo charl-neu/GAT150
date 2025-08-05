@@ -1,6 +1,6 @@
 #include "Scene.h"
-#include "../Game/Actor.h"
-#include "../Renderer/Renderer.h"
+#include "Game/Actor.h"
+#include "Renderer/Renderer.h"
 
 namespace viper
 {

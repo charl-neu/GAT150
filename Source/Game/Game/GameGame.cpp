@@ -10,6 +10,7 @@
 #include "Enemy.h"
 #include "GameData.h"
 #include "Renderer/Particle System.h"
+#include "Resources/ResourceManager.h"
 
 
 #include <vector>
@@ -19,26 +20,11 @@ bool SpaceGame::Initialize()
 {
 	m_scene = std::make_unique<viper::Scene>(this);
 
-	m_titlefont = std::make_shared<viper::Font>();
-	m_titlefont->Load("Assets/bsde.ttf", 120.0f);
-
-	m_uifont = std::make_shared<viper::Font>();
-	m_uifont->Load("Assets/fonty.ttf", 40.0f);
-
-	m_titleText = std::make_unique<viper::Text>(m_titlefont);
-	m_titleText->Create(viper::GetEngine().GetRenderer(), "That One Bad Area.", viper::vec3{ 1.0f, 1.0f, 1.0f });
-
-	m_scoreText = std::make_unique<viper::Text>(m_uifont);
-	m_scoreText->Create(viper::GetEngine().GetRenderer(), "Score: 0", viper::vec3{ 1.0f, 1.0f, 1.0f });
-
-	m_livesText = std::make_unique<viper::Text>(m_uifont);
-	m_livesText->Create(viper::GetEngine().GetRenderer(), "Lives: 3", viper::vec3{ 1.0f, 1.0f, 1.0f });
-
-	m_healthText = std::make_unique<viper::Text>(m_uifont);
-	m_healthText->Create(viper::GetEngine().GetRenderer(), "Health: 3", viper::vec3{ 1.0f, 1.0f, 1.0f });
-
-	m_multText = std::make_unique<viper::Text>(m_uifont);
-	m_multText->Create(viper::GetEngine().GetRenderer(), "Multiplier: 100%", viper::vec3{ 1.0f, 1.0f, 1.0f });
+	m_titleText = std::make_unique<viper::Text>(viper::ResourceManager::Instance().Get<viper::Font>("Assets/bsde.ttf", 120.0f));
+	m_scoreText = std::make_unique<viper::Text>(viper::ResourceManager::Instance().Get<viper::Font>("Assets/fonty.ttf", 40.0f));
+	m_livesText = std::make_unique<viper::Text>(viper::ResourceManager::Instance().Get<viper::Font>("Assets/fonty.ttf", 40.0f));
+	m_healthText = std::make_unique<viper::Text>(viper::ResourceManager::Instance().Get<viper::Font>("Assets/fonty.ttf", 40.0f));
+	m_multText = std::make_unique<viper::Text>(viper::ResourceManager::Instance().Get<viper::Font>("Assets/fonty.ttf", 40.0f));
 
 	return true;
 }

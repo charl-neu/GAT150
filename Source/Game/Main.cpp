@@ -16,6 +16,7 @@
 #include "Core/File.h"
 #include "Renderer/Particle System.h"
 #include "Renderer/Texture.h"
+#include "Resources/ResourceManager.h"
 
 
 #include <SDL3/SDL.h>
@@ -31,6 +32,8 @@
 
 int main(int argc, char* argv[]) {
 
+    //set the file path
+    viper::file::SetCurrentDirectory("Assets");
 
     //init engine
 	viper::GetEngine().Initialize();
@@ -38,6 +41,7 @@ int main(int argc, char* argv[]) {
 	std::unique_ptr<SpaceGame> game = std::make_unique<SpaceGame>();
 	game->Initialize();
 
+    auto texturer = viper::ResourceManager::Instance().Get < viper::Texture>("vacationmemoriesbad.png", RENDERER);
 
 
     //create stars
@@ -51,7 +55,7 @@ int main(int argc, char* argv[]) {
     bool quit = false;
 
     std::shared_ptr<viper::Texture> texture = std::make_shared<viper::Texture>();
-    texture->Load("Assets/vacationmemoriesbad.png", RENDERER);
+    texture->Load("vacationmemoriesbad.png", RENDERER);
      
     //main loop
     while (!quit) {
