@@ -9,8 +9,8 @@ public:
 	int health = 3;
 public:
 	Player() = default;
-	Player(const viper::Transform& transform, std::shared_ptr<viper::Model> model) :
-		Actor{ transform, model } 
+	Player(const viper::Transform& transform, viper::res_t<viper::Texture> texture) :
+		Actor{ transform, texture } 
 	{}
 
 	void Update(float deltaTime) override;

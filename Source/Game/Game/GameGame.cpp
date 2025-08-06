@@ -10,7 +10,6 @@
 #include "Enemy.h"
 #include "GameData.h"
 #include "Renderer/Particle System.h"
-#include "Resources/ResourceManager.h"
 
 
 #include <vector>
@@ -20,11 +19,11 @@ bool SpaceGame::Initialize()
 {
 	m_scene = std::make_unique<viper::Scene>(this);
 
-	m_titleText = std::make_unique<viper::Text>(viper::ResourceManager::Instance().Get<viper::Font>("Assets/bsde.ttf", 120.0f));
-	m_scoreText = std::make_unique<viper::Text>(viper::ResourceManager::Instance().Get<viper::Font>("Assets/fonty.ttf", 40.0f));
-	m_livesText = std::make_unique<viper::Text>(viper::ResourceManager::Instance().Get<viper::Font>("Assets/fonty.ttf", 40.0f));
-	m_healthText = std::make_unique<viper::Text>(viper::ResourceManager::Instance().Get<viper::Font>("Assets/fonty.ttf", 40.0f));
-	m_multText = std::make_unique<viper::Text>(viper::ResourceManager::Instance().Get<viper::Font>("Assets/fonty.ttf", 40.0f));
+	m_titleText = std::make_unique<viper::Text>(viper::Resources().GetWithID<viper::Font>("Title_font", "bsde.ttf", 120.0f));
+	m_scoreText = std::make_unique<viper::Text>(viper::Resources().GetWithID<viper::Font>("UI_font", "fonty.ttf", 40.0f));
+	m_livesText = std::make_unique<viper::Text>(viper::Resources().GetWithID<viper::Font>("UI_font", "fonty.ttf", 40.0f));
+	m_healthText = std::make_unique<viper::Text>(viper::Resources().GetWithID<viper::Font>("UI_font", "fonty.ttf", 40.0f));
+	m_multText = std::make_unique<viper::Text>(viper::Resources().GetWithID<viper::Font>("UI_font", "fonty.ttf", 40.0f));
 
 	return true;
 }
@@ -56,10 +55,8 @@ void SpaceGame::Update(float dt)
 	case GameState::StartRound:
 	{
 		m_scene->RemoveAllActors();
-		std::shared_ptr<viper::Model> pl_model = std::make_shared<viper::Model>(GameData::pl_points, viper::vec3{ 0, 0, 1.0f });
-
-		viper::Transform transform{ viper::vec2{viper::GetEngine().GetRenderer().GetWidth() * .5f,viper::GetEngine().GetRenderer().GetHeight() * .5f}, 0, 5.0f };
-		auto player = std::make_unique<Player>(transform, pl_model);
+		viper::Transform transform;
+		auto player = std::make_unique<Player>(transform, viper::Resources().Get<viper::Texture>("vacationmemoriesbad.png", viper::GetEngine().GetRenderer()));
 		player->damping = 0.5f;
 		player->accel = 400.0f;
 		player->angularVel = 240.0f;
@@ -154,13 +151,9 @@ void SpaceGame::SpawnEnemy() {
 		switch (viper::random::getInt(0, 3)) {
 		case 0:
 			{
-				std::shared_ptr<viper::Model> en_model = std::make_shared<viper::Model>(GameData::sp_points, viper::vec3{ 1.0f, 0, 0 });
-
 				viper::vec2 position = player->transform.position + viper::random::onUnitCircle() * viper::random::getReal(200.0f, 500.0f);
 				viper::Transform transform{ position, viper::random::getReal(0.0f, 360.0f), 4.5f };
-
-
-				std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(transform, en_model);
+				std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(transform, viper::Resources().Get<viper::Texture>("vacationmemoriesbad.png", viper::GetEngine().GetRenderer()));
 				enemy->damping = 1.5f;
 				enemy->accel = (viper::random::getReal() * 600.0f) + 200.0f;
 				enemy->name = "speeder";
@@ -172,13 +165,9 @@ void SpaceGame::SpawnEnemy() {
 				break;
 		case 1:
 			{
-				std::shared_ptr<viper::Model> en_model = std::make_shared<viper::Model>(GameData::ba_points, viper::vec3{ 1.0f, 0, 0 });
-
 				viper::vec2 position = player->transform.position + viper::random::onUnitCircle() * viper::random::getReal(200.0f, 500.0f);
 				viper::Transform transform{ position, viper::random::getReal(0.0f, 360.0f), 4.5f };
-
-
-				std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(transform, en_model);
+				std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(transform, viper::Resources().Get<viper::Texture>("vacationmemoriesbad.png", viper::GetEngine().GetRenderer()));
 				enemy->damping = 0.5f;
 				enemy->accel = (viper::random::getReal() * 200.0f) + 50.0f;
 				enemy->name = "Basic enemy";
@@ -188,13 +177,9 @@ void SpaceGame::SpawnEnemy() {
 				break;
 		case 2:
 			{
-				std::shared_ptr<viper::Model> en_model = std::make_shared<viper::Model>(GameData::bg_points, viper::vec3{ 1.0f, 0, 0 });
-
 				viper::vec2 position = player->transform.position + viper::random::onUnitCircle() * viper::random::getReal(200.0f, 500.0f);
 				viper::Transform transform{ position, viper::random::getReal(0.0f, 360.0f), 4.5f };
-
-
-				std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(transform, en_model);
+				std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(transform, viper::Resources().Get<viper::Texture>("vacationmemoriesbad.png", viper::GetEngine().GetRenderer()));
 				enemy->damping = 1.0f;
 				enemy->accel = (viper::random::getReal() * 50.0f) + 10.0f;
 				enemy->name = "Big guy";
@@ -206,13 +191,9 @@ void SpaceGame::SpawnEnemy() {
 				break;
 		case 3:
 			{
-				std::shared_ptr<viper::Model> en_model = std::make_shared<viper::Model>(GameData::bg_points, viper::vec3{ 1.0f, 0, 0 });
-
 				viper::vec2 position = player->transform.position + viper::random::onUnitCircle() * viper::random::getReal(200.0f, 500.0f);
-				viper::Transform transform{ position, viper::random::getReal(0.0f, 360.0f), 0.1f };
-
-
-				std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(transform, en_model);
+				viper::Transform transform{ position, viper::random::getReal(0.0f, 360.0f), 4.5f };
+				std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(transform, viper::Resources().Get<viper::Texture>("vacationmemoriesbad.png", viper::GetEngine().GetRenderer()));
 				enemy->damping = .25f;
 				enemy->accel = (viper::random::getReal() * 50.0f) + 10.0f;
 				enemy->name = "immortal snail";

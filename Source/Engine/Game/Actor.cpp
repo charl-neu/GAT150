@@ -33,15 +33,12 @@ namespace viper {
 			return; 
 		}
 
-		if (m_model) {
-			m_model->Draw(renderer, transform);
+		if (m_texture) {
+			renderer.DrawTextureRotated(m_texture.get(), transform.position.x, transform.position.y, transform.scale, transform.rotation);
 		}
 	}
 
 	float Actor::GetRadius() {
-		if (m_model) {
-			return m_model->GetRadius() * transform.scale; 
-		}
-		return 0.0f; 
+		return (m_texture) ? (m_texture->GetSize().Length() * 0.5f) * transform.scale * 0.5f : 0;
 	}
 } 

@@ -40,9 +40,9 @@ int main(int argc, char* argv[]) {
 
 	std::unique_ptr<SpaceGame> game = std::make_unique<SpaceGame>();
 	game->Initialize();
-
-    auto texturer = viper::ResourceManager::Instance().Get < viper::Texture>("vacationmemoriesbad.png", RENDERER);
-
+    //
+    auto texture = viper::Resources().Get < viper::Texture>("vacationmemoriesbad.png", RENDERER);
+    //
 
     //create stars
     std::vector<viper::vec2> stars;
@@ -54,9 +54,6 @@ int main(int argc, char* argv[]) {
     SDL_Event e;
     bool quit = false;
 
-    std::shared_ptr<viper::Texture> texture = std::make_shared<viper::Texture>();
-    texture->Load("vacationmemoriesbad.png", RENDERER);
-     
     //main loop
     while (!quit) {
 		
@@ -76,10 +73,6 @@ int main(int argc, char* argv[]) {
 
         if (INPUT.GetKeyPressed(SDL_SCANCODE_ESCAPE)) quit = true;
 
-        if (INPUT.GetMouseButtonPressed(viper::InputSystem::MouseButton::Left)) {
-            std::cout << "mouse pressed\n";
-        }
-
 
 		viper::vec3 color{ 1, 1, 1 };
 
@@ -88,7 +81,6 @@ int main(int argc, char* argv[]) {
 
 		RENDERER.DrawTexture(texture.get(), 10, 10);
         
-		game->Draw(RENDERER);
 
         for(auto& star : stars)
         {
@@ -100,6 +92,8 @@ int main(int argc, char* argv[]) {
             star.x = viper::Wrap(star.x, 0.0f, 1280.0f);
             star.y = viper::Wrap(star.y, 0.0f, 1024.0f);
 		}
+
+		game->Draw(RENDERER);
 
 
         RENDERER.Present();

@@ -7,11 +7,6 @@
 namespace viper
 {
 
-	Engine& GetEngine()
-	{
-		static Engine engine;
-		return engine;
-	}
 
 	bool Engine::Initialize() 
 	{

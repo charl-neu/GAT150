@@ -8,10 +8,10 @@ public:
 	float angularVel = 120.0f;
 public:
 	Rocket() = default;
-	Rocket(const viper::Transform& transform, std::shared_ptr<viper::Model> model) :
-		Actor{ transform, model }
-	{
-	}
+	Rocket(const viper::Transform& transform, viper::res_t<viper::Texture> texture) :
+		Actor{ transform, texture }
+	{ }
+	
 
 	void Update(float deltaTime) override;
 private:

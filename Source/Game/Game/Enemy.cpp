@@ -40,9 +40,8 @@ void Enemy::Update(float deltaTime)
 
 	firetimer -= deltaTime;
 	if (firetimer <= 0.0f && playerFound) {
-		std::shared_ptr<viper::Model> ro_model = std::make_shared<viper::Model>(GameData::ro_points, viper::vec3{ 1.0f, 0, 0 });
-		viper::Transform shape{ viper::vec2{transform.position.x, transform.position.y}, transform.rotation, 1.0f };
-		auto rocket = std::make_unique<Rocket>(shape, ro_model);
+		viper::Transform transform;
+		auto rocket = std::make_unique<Rocket>(transform, viper::Resources().Get<viper::Texture>("vacationmemoriesbad.png", viper::GetEngine().GetRenderer()));
 		rocket->accel = 600.0f;
 		rocket->damping = 0.0f;
 		rocket->name = "rockete";

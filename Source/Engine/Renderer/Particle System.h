@@ -9,6 +9,7 @@ namespace viper {
 		bool active{ false };
 		float lifetime{ 1 };
 		
+		
 		vec2 position;
 		vec2 velocity;
 		vec3 color;

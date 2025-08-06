@@ -1,6 +1,7 @@
 #pragma once
 #include "Math/Transform.h"
 #include "Math/Vector2.h"
+#include "Renderer/Texture.h"
 #include <string>
 #include <memory>
 
@@ -21,7 +22,10 @@ namespace viper {
 
 	public:
 		Actor() = default;
-		Actor(const Transform& transform, std::shared_ptr<class Model> model) : transform(transform), m_model{ model } {}
+		Actor(const Transform& transform, res_t<Texture> texture) {
+			m_texture = texture;
+		}
+
 
 		virtual void Update(float deltaTime);
 		virtual void Draw(class Renderer& renderer);
@@ -31,6 +35,7 @@ namespace viper {
 		float GetRadius();
 
 	protected:
-		std::shared_ptr<Model> m_model;
+		res_t<Texture> m_texture;
+		//std::shared_ptr<Model> m_model;
 	};
 }
