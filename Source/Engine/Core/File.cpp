@@ -1,4 +1,6 @@
 #include "File.h"
+#include "Logger.h"
+
 #include <filesystem>
 #include <fstream>
 #include <sstream>
@@ -88,7 +90,7 @@ namespace viper::file {
             str = ss.str();
         }
         else {
-            std::cerr << "Error: Could not open the file.\n";
+            Logger::Error("Error: Could not open the file.");
             return 1;
         }
         // Print file content

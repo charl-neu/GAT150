@@ -56,6 +56,7 @@ void SpaceGame::Update(float dt)
 	{
 		m_scene->RemoveAllActors();
 		viper::Transform transform;
+		transform.position = { 500,500 };
 		auto player = std::make_unique<Player>(transform, viper::Resources().Get<viper::Texture>("vacationmemoriesbad.png", viper::GetEngine().GetRenderer()));
 		player->damping = 0.5f;
 		player->accel = 400.0f;

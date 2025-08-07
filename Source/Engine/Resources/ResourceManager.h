@@ -3,6 +3,7 @@
 #include "Core/StringHelperr.h"
 #include "Core/Singleton.h"
 #include "Resource.h"
+#include "Core/Logger.h"
 
 #include <string>
 #include <map>
@@ -50,7 +51,7 @@ namespace viper
 			auto derived = std::dynamic_pointer_cast<T>(base);
 			//check if cast was successful
 			if (derived == nullptr) {
-				std::cerr << "Resource type mismatch for resource: " << key << std::endl;
+				Logger::Error("Resource type mismatch for resource: {}", key);
 				return res_t<T>();
 			}
 
@@ -62,7 +63,7 @@ namespace viper
 		//load resource
 		res_t<T> resource = std::make_shared<T>();
 		if (resource->Load(key, std::forward<Args>(args)...) == false) {
-			std::cerr << "Could not load resource: " << name << std::endl;
+			Logger::Error("Could not load resource: {}", name);
 			return res_t<T>();
 		}
 

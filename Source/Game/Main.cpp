@@ -79,8 +79,6 @@ int main(int argc, char* argv[]) {
         RENDERER.SetColor(0.0f, 0.0f, 0.0f);
         RENDERER.Clear();
 
-		RENDERER.DrawTexture(texture.get(), 10, 10);
-        
 
         for(auto& star : stars)
         {

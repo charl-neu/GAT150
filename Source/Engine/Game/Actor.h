@@ -22,9 +22,12 @@ namespace viper {
 
 	public:
 		Actor() = default;
-		Actor(const Transform& transform, res_t<Texture> texture) {
-			m_texture = texture;
+		Actor(const Transform& transform, res_t<Texture> texture) :
+			transform{ transform },
+			m_texture{ texture }
+		{
 		}
+	
 
 
 		virtual void Update(float deltaTime);
