@@ -58,7 +58,10 @@ void Player::Update(float deltaTime)
 	if (viper::GetEngine().GetInputSystem().GetKeyPressed(SDL_SCANCODE_SPACE)) {
 		if(firetimer <= 0.0f) {
 			viper::Transform transform;
-			auto rocket = std::make_unique<Rocket>(transform, viper::Resources().Get<viper::Texture>("vacationmemoriesbad.png", viper::GetEngine().GetRenderer()));
+			transform.position = this->transform.position;
+			transform.rotation = this->transform.rotation;
+			transform.scale = 0.5f;
+			auto rocket = std::make_unique<Rocket>(transform, viper::Resources().Get<viper::Texture>("missile-1.png", viper::GetEngine().GetRenderer()));
 			rocket->accel = 600.0f;
 			rocket->damping = 0.0f;
 			rocket->name = "rocket";

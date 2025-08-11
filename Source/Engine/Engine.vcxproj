@@ -185,6 +185,7 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Game\Actor.h" />
     <ClInclude Include="Game\Game.h" />
+    <ClInclude Include="Game\Object.h" />
     <ClInclude Include="Game\Scene.h" />
     <ClInclude Include="Input\Input System.h" />
     <ClInclude Include="Math\Math.h" />
