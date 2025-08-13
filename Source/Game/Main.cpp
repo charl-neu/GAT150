@@ -1,28 +1,6 @@
 #include "Game/Actor.h"
-#include "Math/Math.h"
-#include "Math/Vector2.h"
-#include "Math/Vector3.h"
-#include "Math/Transform.h"
-#include "Core/Random.h"
-#include "Core/Time.h"
-#include "Renderer/Renderer.h"
-#include "Renderer/Model.h"
-#include "Input/Input System.h"
-#include "Audio/Audio System.h"
 #include "game/GamePlayer.h"
-#include "game/scene.h"
-#include "Engine.h"
 #include "game/GameGame.h"
-#include "Core/File.h"
-#include "Renderer/Particle System.h"
-#include "Renderer/Texture.h"
-#include "Resources/ResourceManager.h"
-
-
-#include <SDL3/SDL.h>
-#include <iostream>
-#include <vector>
-#include <memory>
 
 #define RENDERER viper::GetEngine().GetRenderer()
 #define AUDIO viper::GetEngine().GetAudioSystem()

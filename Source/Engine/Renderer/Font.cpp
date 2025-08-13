@@ -1,8 +1,4 @@
 #include "Font.h"
-#include "../Core/Logger.h"
-#include <iostream>
-
-
 namespace viper {
 	Font::~Font() {
 		if (m_ttfFont != nullptr) {

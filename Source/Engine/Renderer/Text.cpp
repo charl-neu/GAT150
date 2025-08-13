@@ -1,12 +1,7 @@
 #include "Text.h"
 #include "Renderer.h"
 #include "Font.h"
-#include "../Math/Vector3.h"
-#include "../Core/Logger.h"
 
-#include <SDL3/SDL_ttf.h>
-#include <iostream>
-#include <cassert>
 
 
 namespace viper
@@ -49,7 +44,7 @@ namespace viper
 		//assert(success);
 
 		// set the texture into the renderer at rect 
-		SDL_FRect rect{ x, y, width, height };
+		SDL_FRect rect{ static_cast<float>(x), static_cast<float>(y), width, height };
 		success = SDL_RenderTexture(renderer.m_renderer, m_texture, NULL, &rect);
 		//assert(success);
 	}

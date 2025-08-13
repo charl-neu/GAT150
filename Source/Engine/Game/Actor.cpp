@@ -1,6 +1,7 @@
 #include "Actor.h"
 #include "../Renderer/Model.h"
 #include "../Renderer/Renderer.h"
+#include "../Components/RendererComponent.h"
 
 namespace viper {
 	/// <summary>
@@ -16,6 +17,13 @@ namespace viper {
 			lifespan -= deltaTime;
 			if (lifespan <= 0.0f) {
 				destroyed = true; 
+				return; 
+			}
+		}
+
+		for (auto& component : m_components) {
+			if (component) {
+				component->update(deltaTime);
 			}
 		}
 
@@ -33,12 +41,32 @@ namespace viper {
 			return; 
 		}
 
+		for (auto& component : m_components) {
+			if (component) {
+				auto rendcomp = dynamic_cast<RendererComponent*>(component.get());
+				if (rendcomp) {
+					rendcomp->Draw(renderer);
+				}
+			}
+		}
+
 		if (m_texture) {
 			renderer.DrawTextureRotated(m_texture.get(), transform.position.x, transform.position.y, transform.scale, transform.rotation);
 		}
 	}
 
 	float Actor::GetRadius() {
-		return (m_texture) ? (m_texture->GetSize().Length() * 0.5f) * transform.scale * 0.5f : 0;
+		//if (m_texture) {
+			return 50; // (m_texture->GetSize().Length() * 0.5f)* transform.scale * 0.5f;
+		//}
+		return 0;//
+	}
+
+	void Actor::AddComponent(std::unique_ptr<class Component> component)
+	{
+		component->owner = this; 
+		m_components.push_back(std::move(component));
+		
+		
 	}
 } 

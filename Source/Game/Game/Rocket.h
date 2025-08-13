@@ -8,8 +8,8 @@ public:
 	float angularVel = 120.0f;
 public:
 	Rocket() = default;
-	Rocket(const viper::Transform& transform, viper::res_t<viper::Texture> texture) :
-		Actor{ transform, texture }
+	Rocket(const viper::Transform& transform):
+		Actor{ transform}
 	{ }
 	
 

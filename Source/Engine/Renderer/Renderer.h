@@ -6,7 +6,6 @@
 #include <iostream>
 #include <SDL3/SDL.h>
 
-
 namespace viper {
 	class Renderer
 	{

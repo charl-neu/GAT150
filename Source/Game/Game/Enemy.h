@@ -11,8 +11,8 @@ public:
 	int m_points = 100;
 public:
 	Enemy() = default;
-	Enemy(const viper::Transform& transform, viper::res_t<viper::Texture> texture) :
-		Actor{ transform, texture }
+	Enemy(const viper::Transform& transform) :
+		Actor{ transform, }
 	{
 	}
 

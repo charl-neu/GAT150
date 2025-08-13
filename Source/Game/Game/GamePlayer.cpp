@@ -1,15 +1,10 @@
 #include "GamePlayer.h"
 #include "Rocket.h"
 #include "Engine.h"
-#include "Input/Input System.h"
-#include "Math/Math.h"
-#include "Game/Scene.h"
-#include "Renderer/Model.h"
 #include "GameData.h"
 #include "GameGame.h"
-#include "Renderer/Renderer.h"
-#include "Renderer/Particle System.h"
-#include "Core/Random.h"
+
+
 
 void Player::Update(float deltaTime)
 {
@@ -61,12 +56,17 @@ void Player::Update(float deltaTime)
 			transform.position = this->transform.position;
 			transform.rotation = this->transform.rotation;
 			transform.scale = 0.5f;
-			auto rocket = std::make_unique<Rocket>(transform, viper::Resources().Get<viper::Texture>("missile-1.png", viper::GetEngine().GetRenderer()));
+			auto rocket = std::make_unique<Rocket>(transform); // viper::Resources().Get<viper::Texture>("missile-1.png", viper::GetEngine().GetRenderer()));
 			rocket->accel = 600.0f;
 			rocket->damping = 0.0f;
 			rocket->name = "rocket";
 			rocket->tag = "rocket";
 			rocket->lifespan = 1.5f;
+
+			auto spriteRenderer = std::make_unique<viper::SpriteRenderer>();
+			spriteRenderer->textureName = "missile-1.png";
+			rocket->AddComponent(std::move(spriteRenderer));
+
 			scene->AddActor(std::move(rocket));
 			firetimer = 0.2f;
 			// TODO: Firing Sound viper::GetEngine().GetAudioSystem().PlaySound("fire");

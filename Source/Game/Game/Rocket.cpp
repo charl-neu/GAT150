@@ -1,12 +1,6 @@
 #include "Rocket.h"
 #include "Engine.h"
-#include "Game/scene.h"
-#include "Renderer/Renderer.h"
 #include "GamePlayer.h"
-#include "Core/Random.h"
-#include "Renderer/Particle System.h"
-#include "Game/Game.h"
-
 void Rocket::Update(float deltaTime)
 {
 	viper::vec2 force = viper::vec2{ 1,0 }.Rotate(viper::DegToRad(transform.rotation)) * accel;

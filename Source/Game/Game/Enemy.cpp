@@ -1,15 +1,7 @@
 #include "Enemy.h"
-#include "Engine.h"
-#include "Game/scene.h"
-#include "Renderer/Renderer.h"
 #include "GamePlayer.h"
-#include "Game/Game.h"
-#include "Core/Random.h"
-#include "Renderer/Particle System.h"
 #include "GameData.h"
 #include "Rocket.h"
-#include "Math/Vector2.h"
-#include "Renderer/Model.h"
 
 
 void Enemy::Update(float deltaTime)
@@ -44,12 +36,18 @@ void Enemy::Update(float deltaTime)
 		transform.position = this->transform.position;
 		transform.rotation = this->transform.rotation;
 		transform.scale = 0.3f;
-		auto rocket = std::make_unique<Rocket>(transform, viper::Resources().Get<viper::Texture>("missile-1.png", viper::GetEngine().GetRenderer()));
+		auto rocket = std::make_unique<Rocket>(transform);// , viper::Resources().Get<viper::Texture>("missile-1.png", viper::GetEngine().GetRenderer()));
 		rocket->accel = 600.0f;
 		rocket->damping = 0.0f;
 		rocket->name = "rockete";
 		rocket->tag = "rockete";
 		rocket->lifespan = 0.5f;
+
+		auto spriteRenderer = std::make_unique<viper::SpriteRenderer>();
+		spriteRenderer->textureName = "missile-1.png";
+		rocket->AddComponent(std::move(spriteRenderer));
+
+
 		scene->AddActor(std::move(rocket));
 		firetimer = maxfire;
 	}
