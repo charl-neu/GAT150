@@ -83,14 +83,14 @@ namespace viper::file {
             // Read entire file into stringstream
             ss << file.rdbuf();
             // Convert to string
-            str = ss.str();
+            content = ss.str();
+            std::cout << content << '\n';
         }
         else {
             Logger::Error("Error: Could not open the file.");
             return 1;
         }
         // Print file content
-        std::cout << str << '\n';
 
 		file.close();
 

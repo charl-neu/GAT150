@@ -8,10 +8,10 @@ namespace viper{
 	/// </summary>
 	/// <param name="filename">The path to the file containing mesh data.</param>
 	/// <returns>True if the mesh was loaded successfully; otherwise, false.</returns>
-	bool Mesh::Load(const std::string& filename)
+	bool Mesh::Load(const std::string& key)
 	{
 		std::string buffer;
-		file::ReadTextFile(filename, buffer);
+		file::ReadTextFile(key, buffer);
 
 		std::stringstream stream(buffer);
 
@@ -22,7 +22,13 @@ namespace viper{
 		{
 			m_points.push_back(point);
 		}
-		return false;
+
+		if (!stream.eof())
+		{
+			Logger::Error("Failed to load mesh from file: {}", key);
+			return false;
+		}
+		return true;
 	}
 
 	/// <summary>

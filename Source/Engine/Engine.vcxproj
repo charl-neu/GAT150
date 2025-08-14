@@ -179,6 +179,7 @@
     </ClCompile>
     <ClCompile Include="Audio\Audio System.cpp" />
     <ClCompile Include="Audio\AudioClip.cpp" />
+    <ClCompile Include="Components\AudioSource.cpp" />
     <ClCompile Include="Components\CircleCollider2d.cpp" />
     <ClCompile Include="Components\MeshRenderer.cpp" />
     <ClCompile Include="Components\RigidBody.cpp" />
@@ -201,6 +202,7 @@
     <ClInclude Include="..\EnginePCH.h" />
     <ClInclude Include="Audio\Audio System.h" />
     <ClInclude Include="Audio\AudioClip.h" />
+    <ClInclude Include="Components\AudioSource.h" />
     <ClInclude Include="Components\CircleCollider2d.h" />
     <ClInclude Include="Components\ColliderComponent.h" />
     <ClInclude Include="Components\MeshRenderer.h" />

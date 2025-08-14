@@ -16,7 +16,7 @@ namespace viper {
 			CalculateRadius();
 		}
 
-		bool Load(const std::string& filename);
+		bool Load(const std::string& key);
 
 		void Draw(class Renderer& renderer, const vec2& position, float rotation, float scale);
 		void Draw(class Renderer& renderer, const Transform& transform);

@@ -5,11 +5,7 @@ namespace viper
 {
 	void SpriteRenderer::update(float deltaTime)
 	{
-		/*
-		if (owner) {
-			owner->Update(deltaTime);
-		}
-		*/
+
 	}
 
 	void SpriteRenderer::Draw(Renderer& renderer)
