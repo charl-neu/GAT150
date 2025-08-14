@@ -21,14 +21,13 @@ namespace viper {
 			}
 		}
 
+		//update all components
 		for (auto& component : m_components) {
-			if (component) {
+			if (component->active) {
 				component->update(deltaTime);
 			}
 		}
 
-		transform.position += velocity * deltaTime;
-		velocity *= (1.0f / (1.0f + damping * deltaTime)); 
 	}
 
 	/// <summary>
@@ -50,17 +49,10 @@ namespace viper {
 			}
 		}
 
-		if (m_texture) {
-			renderer.DrawTextureRotated(m_texture.get(), transform.position.x, transform.position.y, transform.scale, transform.rotation);
-		}
+		
 	}
 
-	float Actor::GetRadius() {
-		//if (m_texture) {
-			return 50; // (m_texture->GetSize().Length() * 0.5f)* transform.scale * 0.5f;
-		//}
-		return 0;//
-	}
+
 
 	void Actor::AddComponent(std::unique_ptr<class Component> component)
 	{

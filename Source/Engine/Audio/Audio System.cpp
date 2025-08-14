@@ -1,4 +1,5 @@
 #include "Audio System.h"
+#include "AudioClip.h"
 
 namespace viper {
 	/// <summary>
@@ -90,6 +91,14 @@ namespace viper {
 
 		m_system->playSound(m_sounds[name], 0, false, nullptr);
 
+		return true;
+	}
+
+	bool AudioSystem::PlaySound(AudioClip& audioClip)
+	{
+
+		FMOD_RESULT result = m_system->playSound(audioClip.m_sound, 0, false, nullptr);
+		if (!checkFMODResult(result)) return false;
 		return true;
 	}
 

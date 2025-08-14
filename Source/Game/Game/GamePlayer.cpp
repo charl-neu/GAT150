@@ -8,11 +8,12 @@
 
 void Player::Update(float deltaTime)
 {
+	auto rigidBody = GetComponent<viper::RigidBody>();
 
-	if (velocity.Length()) {
+	if (rigidBody->velocity.Length()) {
 		viper::Particle particle;
 		particle.position = transform.position;
-		particle.velocity = viper::vec2{ -velocity.x + viper::random::getReal() * 100 - 50, -velocity.y + viper::random::getReal() * 100 - 50 };
+		particle.velocity = viper::vec2{ -(rigidBody->velocity.x) + viper::random::getReal() * 100 - 50, -(rigidBody->velocity.y) + viper::random::getReal() * 100 - 50 };
 		particle.color = viper::vec3{ 1.0f, 1.0f, 1.0f };
 		particle.lifetime = .25f * (viper::random::getReal() * 2);
 		viper::GetEngine().GetParticleSystem().AddParticle(particle);
@@ -45,20 +46,25 @@ void Player::Update(float deltaTime)
 
 	viper::vec2 direction{ 1, 0 };
 	viper::vec2 force = direction.Rotate(viper::DegToRad(transform.rotation)) * accel;
-	velocity += force * thrust * deltaTime;
-
+	if (rigidBody) {
+		rigidBody->velocity += force * thrust * deltaTime;
+	}
 	transform.position.x = viper::Wrap(transform.position.x, 0.0f, 1280.0f);
 	transform.position.y = viper::Wrap(transform.position.y, 0.0f, 1024.0f);
 
 	if (viper::GetEngine().GetInputSystem().GetKeyPressed(SDL_SCANCODE_SPACE)) {
 		if(firetimer <= 0.0f) {
+			auto sound = viper::Resources().Get<viper::AudioClip>("bass.wav", viper::GetEngine().GetAudioSystem());
+			if (sound) {
+				viper::GetEngine().GetAudioSystem().PlaySound(*sound);
+			}
+			
 			viper::Transform transform;
 			transform.position = this->transform.position;
 			transform.rotation = this->transform.rotation;
 			transform.scale = 0.5f;
 			auto rocket = std::make_unique<Rocket>(transform); // viper::Resources().Get<viper::Texture>("missile-1.png", viper::GetEngine().GetRenderer()));
 			rocket->accel = 600.0f;
-			rocket->damping = 0.0f;
 			rocket->name = "rocket";
 			rocket->tag = "rocket";
 			rocket->lifespan = 1.5f;
@@ -66,6 +72,15 @@ void Player::Update(float deltaTime)
 			auto spriteRenderer = std::make_unique<viper::SpriteRenderer>();
 			spriteRenderer->textureName = "missile-1.png";
 			rocket->AddComponent(std::move(spriteRenderer));
+
+
+			auto rigidBody = std::make_unique<viper::RigidBody>();
+			rigidBody->damping = 0.0f;
+			rocket->AddComponent(std::move(rigidBody));
+
+			auto collider = std::make_unique<viper::CircleCollider2d>();
+			collider->radius = 10.0f;
+			rocket->AddComponent(std::move(collider));
 
 			scene->AddActor(std::move(rocket));
 			firetimer = 0.2f;

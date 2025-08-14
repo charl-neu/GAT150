@@ -178,6 +178,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Audio\Audio System.cpp" />
+    <ClCompile Include="Audio\AudioClip.cpp" />
+    <ClCompile Include="Components\CircleCollider2d.cpp" />
+    <ClCompile Include="Components\RigidBody.cpp" />
     <ClCompile Include="Components\SpriteRenderer.cpp" />
     <ClCompile Include="Core\File.cpp" />
     <ClCompile Include="Core\Time.cpp" />
@@ -196,7 +199,11 @@
   <ItemGroup>
     <ClInclude Include="..\EnginePCH.h" />
     <ClInclude Include="Audio\Audio System.h" />
+    <ClInclude Include="Audio\AudioClip.h" />
+    <ClInclude Include="Components\CircleCollider2d.h" />
+    <ClInclude Include="Components\ColliderComponent.h" />
     <ClInclude Include="Components\RendererComponent.h" />
+    <ClInclude Include="Components\RigidBody.h" />
     <ClInclude Include="Components\SpriteRenderer.h" />
     <ClInclude Include="Core\File.h" />
     <ClInclude Include="Core\Logger.h" />

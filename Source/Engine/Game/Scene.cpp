@@ -37,10 +37,12 @@ namespace viper
 			for (auto& actrB : m_actors)
 			{
 				if (actrA.get() != actrB.get()) {
-					float distance = (actrA->transform.position - actrB->transform.position).Length();
-					// temp debugging code
-					std::cout << "Distance between " << actrA->name << " and " << actrB->name << ": " << distance << std::endl;
-					if (distance < (actrA->GetRadius() + actrB->GetRadius())*.75f) {
+					auto colliderA = actrA->GetComponent<ColliderComponent>();
+					auto colliderB = actrB->GetComponent<ColliderComponent>();
+					if (!colliderA || !colliderB) {
+						continue; 
+					}
+					if (colliderA->CheckCollision(*colliderB)) {
 						actrA->onCollision(actrB.get());
 					}
 				}

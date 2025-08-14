@@ -24,6 +24,8 @@
 #include "Game/Component.h"
 #include "Components/RendererComponent.h"
 #include "Components/SpriteRenderer.h"
+#include "Components/RigidBody.h"
+#include "Components/CircleCollider2d.h"
 
 //resources
 #include "Resources/Resource.h"

@@ -25,7 +25,11 @@ void Enemy::Update(float deltaTime)
 	}
 
 	viper::vec2 force = viper::vec2{1,0}.Rotate(viper::DegToRad(transform.rotation)) * accel;
-	velocity += force * deltaTime;
+	//velocity += force * deltaTime;
+	auto rigidBody = GetComponent<viper::RigidBody>();
+	if (rigidBody) {
+		rigidBody->velocity += force * deltaTime;
+	}
 
 	transform.position.x = viper::Wrap(transform.position.x, 0.0f, (float)viper::GetEngine().GetRenderer().GetWidth());
 	transform.position.y = viper::Wrap(transform.position.y, 0.0f, (float)viper::GetEngine().GetRenderer().GetHeight());
@@ -38,7 +42,6 @@ void Enemy::Update(float deltaTime)
 		transform.scale = 0.3f;
 		auto rocket = std::make_unique<Rocket>(transform);// , viper::Resources().Get<viper::Texture>("missile-1.png", viper::GetEngine().GetRenderer()));
 		rocket->accel = 600.0f;
-		rocket->damping = 0.0f;
 		rocket->name = "rockete";
 		rocket->tag = "rockete";
 		rocket->lifespan = 0.5f;
@@ -47,6 +50,13 @@ void Enemy::Update(float deltaTime)
 		spriteRenderer->textureName = "missile-1.png";
 		rocket->AddComponent(std::move(spriteRenderer));
 
+		auto rigidBody = std::make_unique<viper::RigidBody>();
+		rigidBody->damping = 0.0f;
+		rocket->AddComponent(std::move(rigidBody));
+
+		auto collider = std::make_unique<viper::CircleCollider2d>();
+		collider->radius = 10.0f;
+		rocket->AddComponent(std::move(collider));
 
 		scene->AddActor(std::move(rocket));
 		firetimer = maxfire;

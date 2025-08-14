@@ -14,8 +14,9 @@ namespace viper
 
 	void SpriteRenderer::Draw(Renderer& renderer)
 	{ 
-		if (owner) {
-			renderer.DrawTextureRotated(Resources().Get<Texture>(textureName, renderer).get(),
+		auto texture = Resources().Get<Texture>(textureName, renderer).get();
+		if (texture) {
+			renderer.DrawTextureRotated(*texture,
 				owner->transform.position.x,
 				owner->transform.position.y,
 				owner->transform.scale,

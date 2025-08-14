@@ -52,7 +52,6 @@ void SpaceGame::Update(float dt)
 		transform.position = { 500,500 };
 		transform.scale = 1.5f;
 		auto player = std::make_unique<Player>(transform); // viper::Resources().Get<viper::Texture>("green_06.png", viper::GetEngine().GetRenderer()));
-		player->damping = 0.5f;
 		player->accel = 400.0f;
 		player->angularVel = 240.0f;
 		player->name = "Player";  
@@ -61,6 +60,14 @@ void SpaceGame::Update(float dt)
 		auto spriteRenderer = std::make_unique<viper::SpriteRenderer>();
 		spriteRenderer->textureName = "green_06.png";
 		player->AddComponent(std::move(spriteRenderer));
+
+		auto rigidBody = std::make_unique<viper::RigidBody>();
+		rigidBody->damping = 0.5f;
+		player->AddComponent(std::move(rigidBody));
+
+		auto collider = std::make_unique<viper::CircleCollider2d>();
+		collider->radius = 50.0f;
+		player->AddComponent(std::move(collider));
 
 		m_scene->AddActor(std::move(player));
 
@@ -155,15 +162,25 @@ void SpaceGame::SpawnEnemy() {
 				viper::vec2 position = player->transform.position + viper::random::onUnitCircle() * viper::random::getReal(200.0f, 500.0f);
 				viper::Transform transform{ position, viper::random::getReal(0.0f, 360.0f), 2.5f };
 				std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(transform); // viper::Resources().Get<viper::Texture>("greyblue_04.png", viper::GetEngine().GetRenderer()));
-				enemy->damping = 1.5f;
+				//enemy->damping = 1.5f;
 				enemy->accel = (viper::random::getReal() * 600.0f) + 200.0f;
 				enemy->name = "speeder";
 				enemy->tag = "enemy";
 				enemy->firetimer = 9999999.0f;
 				enemy->m_points = 200;
+
 				auto spriteRenderer = std::make_unique<viper::SpriteRenderer>();
 				spriteRenderer->textureName = "greyblue_04.png";
 				enemy->AddComponent(std::move(spriteRenderer));
+
+				auto rigidBody = std::make_unique<viper::RigidBody>();
+				rigidBody->damping = 1.5f;
+				enemy->AddComponent(std::move(rigidBody));
+
+				auto collider = std::make_unique<viper::CircleCollider2d>();
+				collider->radius = 35.0f;
+				enemy->AddComponent(std::move(collider));
+
 				m_scene->AddActor(std::move(enemy));
 			}
 				break;
@@ -172,7 +189,7 @@ void SpaceGame::SpawnEnemy() {
 				viper::vec2 position = player->transform.position + viper::random::onUnitCircle() * viper::random::getReal(200.0f, 500.0f);
 				viper::Transform transform{ position, viper::random::getReal(0.0f, 360.0f), 2.5f };
 				std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(transform); // viper::Resources().Get<viper::Texture>("greyblue_02.png", viper::GetEngine().GetRenderer()));
-				enemy->damping = 0.5f;
+				//enemy->damping = 0.5f;
 				enemy->accel = (viper::random::getReal() * 200.0f) + 50.0f;
 				enemy->name = "Basic enemy";
 				enemy->tag = "enemy";
@@ -180,6 +197,16 @@ void SpaceGame::SpawnEnemy() {
 				auto spriteRenderer = std::make_unique<viper::SpriteRenderer>();
 				spriteRenderer->textureName = "greyblue_02.png";
 				enemy->AddComponent(std::move(spriteRenderer));
+
+
+				auto rigidBody = std::make_unique<viper::RigidBody>();
+				rigidBody->damping = 0.5f;
+				enemy->AddComponent(std::move(rigidBody));
+
+				auto collider = std::make_unique<viper::CircleCollider2d>();
+				collider->radius = 40.0f;
+				enemy->AddComponent(std::move(collider));
+
 				m_scene->AddActor(std::move(enemy));
 			}
 				break;
@@ -188,7 +215,7 @@ void SpaceGame::SpawnEnemy() {
 				viper::vec2 position = player->transform.position + viper::random::onUnitCircle() * viper::random::getReal(200.0f, 500.0f);
 				viper::Transform transform{ position, viper::random::getReal(0.0f, 360.0f), 3.5f };
 				std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(transform); // viper::Resources().Get<viper::Texture>("tankbase_03.png", viper::GetEngine().GetRenderer()));
-				enemy->damping = 1.0f;
+				//enemy->damping = 1.0f;
 				enemy->accel = (viper::random::getReal() * 50.0f) + 10.0f;
 				enemy->name = "Big guy";
 				enemy->tag = "enemy";
@@ -198,6 +225,16 @@ void SpaceGame::SpawnEnemy() {
 				auto spriteRenderer = std::make_unique<viper::SpriteRenderer>();
 				spriteRenderer->textureName = "tankbase_03.png";
 				enemy->AddComponent(std::move(spriteRenderer));
+
+
+				auto rigidBody = std::make_unique<viper::RigidBody>();
+				rigidBody->damping = 1.0f;
+				enemy->AddComponent(std::move(rigidBody));
+
+				auto collider = std::make_unique<viper::CircleCollider2d>();
+				collider->radius = 80.0f;
+				enemy->AddComponent(std::move(collider));
+
 				m_scene->AddActor(std::move(enemy));
 			}
 				break;
@@ -206,7 +243,7 @@ void SpaceGame::SpawnEnemy() {
 				viper::vec2 position = player->transform.position + viper::random::onUnitCircle() * viper::random::getReal(200.0f, 500.0f);
 				viper::Transform transform{ position, viper::random::getReal(0.0f, 360.0f), 1.5f };
 				std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(transform); // viper::Resources().Get<viper::Texture>("projectile06-2.png", viper::GetEngine().GetRenderer()));
-				enemy->damping = .25f;
+				//enemy->damping = .25f;
 				enemy->accel = (viper::random::getReal() * 50.0f) + 10.0f;
 				enemy->name = "immortal snail";
 				enemy->tag = "enemy";
@@ -216,6 +253,15 @@ void SpaceGame::SpawnEnemy() {
 				auto spriteRenderer = std::make_unique<viper::SpriteRenderer>();
 				spriteRenderer->textureName = "projectile06-2.png";
 				enemy->AddComponent(std::move(spriteRenderer));
+
+
+				auto rigidBody = std::make_unique<viper::RigidBody>();
+				rigidBody->damping = .25f;
+				enemy->AddComponent(std::move(rigidBody));
+
+				auto collider = std::make_unique<viper::CircleCollider2d>();
+				collider->radius = 10.0f;
+				enemy->AddComponent(std::move(collider));
 
 				m_scene->AddActor(std::move(enemy));
 			}
