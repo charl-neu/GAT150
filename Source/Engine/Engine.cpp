@@ -12,7 +12,7 @@ namespace viper
 	{
 		m_renderer = std::make_unique<Renderer>();
 		m_renderer->Initialize();
-		m_renderer->CreateWindow("Viper Engine", 1280, 1024);
+		m_renderer->CreateWindow("Viper Engine", 1280, 1024, false);
 
 		m_input = std::make_unique<InputSystem>();
 		m_input->Initialize();
@@ -27,6 +27,8 @@ namespace viper
 
 	void Engine::Shutdown() 
 	{
+		Resources().Clear();
+
 		if (m_particleSystem) {
 			m_particleSystem->Shutdown();
 		}

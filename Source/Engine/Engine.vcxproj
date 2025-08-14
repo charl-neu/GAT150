@@ -180,6 +180,7 @@
     <ClCompile Include="Audio\Audio System.cpp" />
     <ClCompile Include="Audio\AudioClip.cpp" />
     <ClCompile Include="Components\CircleCollider2d.cpp" />
+    <ClCompile Include="Components\MeshRenderer.cpp" />
     <ClCompile Include="Components\RigidBody.cpp" />
     <ClCompile Include="Components\SpriteRenderer.cpp" />
     <ClCompile Include="Core\File.cpp" />
@@ -191,7 +192,7 @@
     <ClCompile Include="Input\Input System.cpp" />
     <ClCompile Include="Renderer\Particle System.cpp" />
     <ClCompile Include="Renderer\Font.cpp" />
-    <ClCompile Include="Renderer\Model.cpp" />
+    <ClCompile Include="Renderer\Mesh.cpp" />
     <ClCompile Include="Renderer\Renderer.cpp" />
     <ClCompile Include="Renderer\Text.cpp" />
     <ClCompile Include="Renderer\Texture.cpp" />
@@ -202,6 +203,7 @@
     <ClInclude Include="Audio\AudioClip.h" />
     <ClInclude Include="Components\CircleCollider2d.h" />
     <ClInclude Include="Components\ColliderComponent.h" />
+    <ClInclude Include="Components\MeshRenderer.h" />
     <ClInclude Include="Components\RendererComponent.h" />
     <ClInclude Include="Components\RigidBody.h" />
     <ClInclude Include="Components\SpriteRenderer.h" />
@@ -224,7 +226,7 @@
     <ClInclude Include="Math\Vector2.h" />
     <ClInclude Include="Math\Vector3.h" />
     <ClInclude Include="Renderer\Font.h" />
-    <ClInclude Include="Renderer\Model.h" />
+    <ClInclude Include="Renderer\Mesh.h" />
     <ClInclude Include="Renderer\Particle System.h" />
     <ClInclude Include="Renderer\Renderer.h" />
     <ClInclude Include="Renderer\Text.h" />

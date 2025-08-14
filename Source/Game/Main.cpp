@@ -13,14 +13,34 @@ int main(int argc, char* argv[]) {
     //set the file path
     viper::file::SetCurrentDirectory("Assets");
 
+
+	std::ifstream file("test.txt");
+    if (!file) {
+        std::cerr << "Failed to open file: test.txt" << std::endl;
+		return 1;
+    }
+	std::cout << "File opened successfully." << std::endl;
+	std::cout << file.rdbuf(); // Read and print the file content
+
+	viper::vec2 v{ 124.5f, 100.0f };
+	std::cout << v << std::endl;
+
+	std::string vstr("{124.5, 100.0}");
+	std::stringstream ss(vstr);
+
+	viper::vec2 v2;
+    ss >> v2;
+	std::cout << v2 << std::endl;
+
+	return 0;
+
+
     //init engine
 	viper::GetEngine().Initialize();
 
 	std::unique_ptr<SpaceGame> game = std::make_unique<SpaceGame>();
 	game->Initialize();
-    //
-    auto texture = viper::Resources().Get < viper::Texture>("vacationmemoriesbad.png", RENDERER);
-    //
+
 
     //create stars
     std::vector<viper::vec2> stars;

@@ -105,6 +105,52 @@ namespace viper {
 		}
 
 	};
+	
+	template<typename T>
+	std::ostream& operator << (std::ostream& os, const Vector2<T>& v) {
+		os << "{" << v.x << ", " << v.y << "}";
+		return os;
+	}
+
+	template<typename T>
+	std::istream& operator >> (std::istream& is, Vector2<T>& v) {
+		char ch = '\00';
+
+		//{x,y]
+
+		//{
+		if (!(is >> std::ws >> ch) || ch != '{') { 
+			is.setstate(std::ios::failbit);
+			return is; 
+		}
+
+		//x
+		if (!(is >> std::ws >> v.x)) { 
+			is.setstate(std::ios::failbit);
+			return is; 
+		}
+
+		//,
+		if (!(is >> std::ws >> ch) || ch != ',') { 
+			is.setstate(std::ios::failbit); 
+			return is; 
+		}
+
+		//y
+		if (!(is >> std::ws >> v.y)) { 
+			is.setstate(std::ios::failbit); 
+			return is; 
+		}
+
+		//}
+		if (!(is >> std::ws >> ch) || ch != '}') { 
+			is.setstate(std::ios::failbit); 
+			return is; 
+		}
+
+
+		return is;
+	}
 
 	using ivec2 = Vector2<int>;
 	using vec2 = Vector2<float>;

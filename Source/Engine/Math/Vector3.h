@@ -41,6 +41,64 @@ namespace viper {
 		float Length() { return viper::sqrtf(LengthSqr()); }
 	};
 
+	template<typename T>
+	std::ostream& operator << (std::ostream& os, const Vector3<T>& v) {
+		os << "{" << v.x << ", " << v.y << "," << v.z << "}";
+		return os;
+	}
+
+	template<typename T>
+	std::istream& operator >> (std::istream& is, Vector3<T>& v) {
+		char ch = '\00';
+
+		//{x,y,z]
+		 
+		//{
+		if (!(is >> std::ws >> ch) || ch != '{') {
+			is.setstate(std::ios::failbit);
+			return is;
+		}
+
+		//x
+		if (!(is >> std::ws >> v.x)) {
+			is.setstate(std::ios::failbit);
+			return is;
+		}
+
+		//,
+		if (!(is >> std::ws >> ch) || ch != ',') {
+			is.setstate(std::ios::failbit);
+			return is;
+		}
+
+		//y
+		if (!(is >> std::ws >> v.y)) {
+			is.setstate(std::ios::failbit);
+			return is;
+		}
+
+		//,
+		if (!(is >> std::ws >> ch) || ch != ',') {
+			is.setstate(std::ios::failbit);
+			return is;
+		}
+
+		//z
+		if (!(is >> std::ws >> v.z)) {
+			is.setstate(std::ios::failbit);
+			return is;
+		}
+
+		//}
+		if (!(is >> std::ws >> ch) || ch != '}') {
+			is.setstate(std::ios::failbit);
+			return is;
+		}
+
+
+		return is;
+	}
+
 	using ivec3 = Vector3<int>;
 	using vec3 = Vector3<float>;
 }
