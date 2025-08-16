@@ -7,6 +7,7 @@
 #include "Core/Singleton.h"
 #include "Core/Time.h"
 #include "Core/StringHelperr.h"
+#include "Core/Json.h"
 
 // game
 #include "Game/Actor.h"
