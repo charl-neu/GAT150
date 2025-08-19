@@ -2,8 +2,7 @@
 #include "Renderer/Renderer.h"
 #include "Actor.h"
 
-namespace viper
-{
+namespace viper {
 	/// <summary>
 	/// Updates all actors by calling their Draw method with the given time delta.
 	/// </summary>
@@ -51,6 +50,8 @@ namespace viper
 
 	}
 
+
+
 	/// <summary>
 	/// Draws all actors using the provided renderer.
 	/// </summary>
@@ -78,5 +79,13 @@ namespace viper
 	void Scene::RemoveAllActors() {
 		m_actors.clear();
 	}
+
+	void Scene::Read(const json::value_t& value)
+	{
+		for (auto& actorValue : value["actors"].GetArray()) {
+			//
+		}
+	}
+
 
 }

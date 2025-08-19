@@ -2,6 +2,7 @@
 #include "Components/ColliderComponent.h"
 namespace viper
 {
+	
 	class CircleCollider2d : public ColliderComponent
 	{
 	public:

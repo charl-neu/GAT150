@@ -3,8 +3,11 @@
 #include "Resources/ResourceManager.h"
 #include "Game/Actor.h"
 
+
 namespace viper
 {
+	FACTORY_REGISTER(MeshRenderer)
+
 	void MeshRenderer::update(float deltaTime)
 	{
 

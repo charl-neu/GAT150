@@ -1,8 +1,11 @@
 #include "SpriteRenderer.h"
 #include "Renderer/Renderer.h"
 
+
 namespace viper
 {
+	FACTORY_REGISTER(SpriteRenderer)
+
 	void SpriteRenderer::update(float deltaTime)
 	{
 
@@ -18,6 +21,13 @@ namespace viper
 				owner->transform.scale,
 				owner->transform.rotation);
 		}
+	}
+
+	void SpriteRenderer::Read(const json::value_t& value)
+	{
+		Object::Read(value);
+
+		JSON_READ(value, textureName);
 	}
 
 }

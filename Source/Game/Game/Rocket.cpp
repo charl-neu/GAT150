@@ -1,8 +1,12 @@
 #include "Rocket.h"
 #include "Engine.h"
 #include "GamePlayer.h"
+
+FACTORY_REGISTER(Rocket)
+
 void Rocket::Update(float deltaTime)
 {
+	/*
 	viper::vec2 force = viper::vec2{ 1,0 }.Rotate(viper::DegToRad(transform.rotation)) * accel;
 	auto rigidBody = GetComponent<viper::RigidBody>();
 	if (rigidBody) {
@@ -26,14 +30,15 @@ void Rocket::Update(float deltaTime)
 	if (lifespan < 0.0f && tag == "rocket") {
 		scene->GetGame()->resetMultiplier();
 	}
+	*/
 }
 
-void Rocket::onCollision(Actor* other)
+void Rocket::onCollision(viper::Actor* other)
 {
-	if ((other->tag == "enemy" && tag == "rocket") || (other->tag == "player" && tag == "rockete")) {
-		destroyed = true;
-		if (tag == "rocket") {
-			scene->GetGame()->increaseMultiplier(0.10f);
+	if ((other->tag == "enemy" && owner->tag == "rocket") || (other->tag == "player" && owner->tag == "rockete")) {
+		owner->destroyed = true;
+		if (owner->tag == "rocket") {
+			owner->scene->GetGame()->increaseMultiplier(0.10f);
 		}
 	}
 }

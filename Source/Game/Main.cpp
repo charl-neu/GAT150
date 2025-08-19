@@ -9,37 +9,16 @@
 #define PARTICLES viper::GetEngine().GetParticleSystem()
 #define JSON_READ(value, data) viper::json::Read(value, #data, data)
 
+
+
 int main(int argc, char* argv[]) {
 
     //set the file path
     viper::file::SetCurrentDirectory("Assets");
+    //viper::Factory::Instance().
 
-    // create json document from the json file contents
-    rapidjson::Document document;
-    viper::json::Load("json.txt", document);
-
-    // read/show the data from the json file
-    std::string name;
-    int age;
-    float speed;
-    bool isAwake;
-    viper::vec2 position;
-    viper::vec3 color;
-
-    // read the json data
-    JSON_READ(document, name);
-    JSON_READ(document, age);
-    JSON_READ(document, speed);
-    JSON_READ(document, isAwake);
-    JSON_READ(document, position);
-    JSON_READ(document, color);
-
-
-    // show the data
-    std::cout << name << " " << age << " " << speed << " " << isAwake << std::endl;
-    std::cout << position.x << " " << position.y << std::endl;
-    std::cout << color.x << " " << color.y << " " << color.z << " " << std::endl;
-
+	auto spriteRenderer = viper::Factory::Instance().Create<viper::SpriteRenderer>("SpriteRenderer");
+	auto meshRenderer = viper::Factory::Instance().Create<viper::MeshRenderer>("MeshRenderer");
 
 	return 0;
 

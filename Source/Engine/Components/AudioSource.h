@@ -3,6 +3,7 @@
 #include <string>
 
 namespace viper {
+	
 	class AudioSource : public Component
 	{
 	public:
@@ -10,6 +11,6 @@ namespace viper {
 
 	private:
 		void Play();
-		void Update(float deltaTime);
+		void update(float deltaTime) override;
 	};
 }

@@ -2,9 +2,10 @@
 #include "Audio/AudioClip.h"
 #include "Engine.h"
 
-
 namespace viper {
-	void AudioSource::Update(float deltaTime)
+	FACTORY_REGISTER(AudioSource)
+
+	void AudioSource::update(float deltaTime)
 	{
 
 	}

@@ -4,10 +4,11 @@
 #include "GameData.h"
 #include "GameGame.h"
 
-
+FACTORY_REGISTER(Player)
 
 void Player::Update(float deltaTime)
 {
+	/*
 	auto rigidBody = GetComponent<viper::RigidBody>();
 
 	if (rigidBody->velocity.Length()) {
@@ -92,18 +93,18 @@ void Player::Update(float deltaTime)
 	invincibilityTimer -= deltaTime;
 
 	Actor::Update(deltaTime);
-
+	*/
 
 }
 
-void Player::onCollision(Actor* other)
+void Player::onCollision(viper::Actor* other)
 {
 	if ((other->tag == "enemy" || other->tag == "rockete") && invincibilityTimer < 0) {
 		health--;
 		if (health <= 0) {
-			destroyed = true;
+			owner->destroyed = true;
 			invincibilityTimer = 2.0f; // Start invincibility timer
-			dynamic_cast<SpaceGame*>(scene->GetGame())->OnPlayerDeath();
+			dynamic_cast<SpaceGame*>(owner->scene->GetGame())->OnPlayerDeath();
 		}
 	}
 }

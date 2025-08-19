@@ -1,21 +1,19 @@
 #pragma once
-#include "../Engine/Game/Actor.h"
+#include "../../Engine/Game/Component.h"
 
-class Rocket : public viper::Actor
+
+class Rocket : public viper::Component
 {
 public:
 	float accel = 200;
 	float angularVel = 120.0f;
 public:
 	Rocket() = default;
-	Rocket(const viper::Transform& transform):
-		Actor{ transform}
-	{ }
+
 	
 
-	void Update(float deltaTime) override;
-private:
+	void Update(float deltaTime);
+public:
 
-	// Inherited via Actor
-	void onCollision(Actor* other) override;
+	void onCollision(viper::Actor* other);
 };

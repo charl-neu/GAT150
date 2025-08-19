@@ -8,7 +8,7 @@
 #include <memory>
 
 namespace viper {
-	class Actor : public Object{
+	class Actor : public Object {
 	public:
 		std::string tag;
 
@@ -28,7 +28,7 @@ namespace viper {
 		virtual void Update(float deltaTime);
 		virtual void Draw(class Renderer& renderer);
 
-		virtual void onCollision(Actor* other) = 0;
+		virtual void onCollision(Actor* other) {}
 
 		//components
 
@@ -40,6 +40,7 @@ namespace viper {
 		template<typename T>
 		std::vector<T*> GetComponents();
 
+		void Read(const json::value_t& value) override;
 
 	protected:
 		std::vector < std::unique_ptr <Component >> m_components;

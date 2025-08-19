@@ -12,6 +12,11 @@ bool SpaceGame::Initialize()
 {
 	m_scene = std::make_unique<viper::Scene>(this);
 
+	viper::json::doc_t document;
+	viper::json::Load("Scene.json", document);
+	m_scene->Read(document);
+
+
 	m_titleText = std::make_unique<viper::Text>(viper::Resources().GetWithID<viper::Font>("Title_font", "bsde.ttf", 120.0f));
 	m_scoreText = std::make_unique<viper::Text>(viper::Resources().GetWithID<viper::Font>("UI_font", "fonty.ttf", 40.0f));
 	m_livesText = std::make_unique<viper::Text>(viper::Resources().GetWithID<viper::Font>("UI_font", "fonty.ttf", 40.0f));
@@ -48,6 +53,8 @@ void SpaceGame::Update(float dt)
 	case GameState::StartRound:
 	{
 		m_scene->RemoveAllActors();
+
+		/*
 		viper::Transform transform;
 		transform.position = { 500,500 };
 		transform.scale = 1.5f;
@@ -71,8 +78,9 @@ void SpaceGame::Update(float dt)
 
 		m_scene->AddActor(std::move(player));
 
-		m_gameState = GameState::Game;
+		*/
 
+		m_gameState = GameState::Game;
 	}
 		break;
 	case GameState::Game:
@@ -153,8 +161,8 @@ void SpaceGame::OnPlayerDeath()
 }
 
 void SpaceGame::SpawnEnemy() {
+	/*
 	Player* player = m_scene->GetActorByName<Player>("Player");
-
 	if (player) {
 		switch (viper::random::getInt(0, 3)) {
 		case 0:
@@ -194,11 +202,11 @@ void SpaceGame::SpawnEnemy() {
 				enemy->name = "Basic enemy";
 				enemy->tag = "enemy";
 
+				*/
 				/*
 				auto spriteRenderer = std::make_unique<viper::SpriteRenderer>();
 				spriteRenderer->textureName = "greyblue_02.png";
 				enemy->AddComponent(std::move(spriteRenderer));
-				*/
 
 				auto meshRenderer = std::make_unique<viper::MeshRenderer>();
 				meshRenderer->meshName = "Meshes/enemy.txt";
@@ -277,5 +285,5 @@ void SpaceGame::SpawnEnemy() {
 		}
 	}
 
-
+	*/
 }

@@ -1,7 +1,9 @@
 #pragma once
-#include "../Engine/Game/Actor.h"
+#include "../../Engine/Game/Component.h"
 
-class Enemy: public viper::Actor
+
+
+class Enemy: public viper::Component
 {
 public:
 	float accel = 200;
@@ -11,15 +13,10 @@ public:
 	int m_points = 100;
 public:
 	Enemy() = default;
-	Enemy(const viper::Transform& transform) :
-		Actor{ transform, }
-	{
-	}
 
-	void Update(float deltaTime) override;
+
+	void Update(float deltaTime);
+	void onCollision(viper::Actor* other);
 private:
-
-	// Inherited via Actor
-	void onCollision(Actor* other) override;
 
 };

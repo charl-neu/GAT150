@@ -3,6 +3,7 @@
 //core
 #include "Core/file.h"
 #include "Core/Logger.h"
+#include "Core/Factory.h"
 #include "Core/Random.h"
 #include "Core/Singleton.h"
 #include "Core/Time.h"

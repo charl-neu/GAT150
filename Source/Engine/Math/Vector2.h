@@ -1,6 +1,7 @@
 #pragma once
-#include <cassert>
 #include "math.h"
+#include <cassert>
+#include <iostream>
 
 namespace viper {
 	template<typename T>

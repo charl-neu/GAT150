@@ -190,8 +190,10 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Game\Actor.cpp" />
     <ClCompile Include="Game\Game.cpp" />
+    <ClCompile Include="Game\Object.cpp" />
     <ClCompile Include="Game\Scene.cpp" />
     <ClCompile Include="Input\Input System.cpp" />
+    <ClCompile Include="Math\Transform.cpp" />
     <ClCompile Include="Renderer\Particle System.cpp" />
     <ClCompile Include="Renderer\Font.cpp" />
     <ClCompile Include="Renderer\Mesh.cpp" />
@@ -210,10 +212,12 @@
     <ClInclude Include="Components\RendererComponent.h" />
     <ClInclude Include="Components\RigidBody.h" />
     <ClInclude Include="Components\SpriteRenderer.h" />
+    <ClInclude Include="Core\Factory.h" />
     <ClInclude Include="Core\File.h" />
     <ClInclude Include="Core\Json.h" />
     <ClInclude Include="Core\Logger.h" />
     <ClInclude Include="Core\Random.h" />
+    <ClInclude Include="Core\Serializable.h" />
     <ClInclude Include="Core\Singleton.h" />
     <ClInclude Include="Core\StringHelperr.h" />
     <ClInclude Include="Core\Time.h" />

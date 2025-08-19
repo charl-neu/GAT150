@@ -4,6 +4,7 @@
 
 
 namespace viper {
+
 	class RigidBody : public Component {
 	public:
 		float damping{ 0.0f };
