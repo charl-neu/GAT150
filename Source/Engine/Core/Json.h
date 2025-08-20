@@ -18,14 +18,14 @@ namespace viper::json
 	using value_t = rapidjson::Value;
 	using doc_t = rapidjson::Document;
 
-	bool Load(const std::string& filename, value_t& document);
+	bool Load(const std::string& filename, doc_t& document);
 
-	bool Read(const value_t& value, const std::string& name, bool& data);
-	bool Read(const value_t& value, const std::string& name, int& data);
-	bool Read(const value_t& value, const std::string& name, float& data);
-	bool Read(const value_t& value, const std::string& name, std::string& data);
-	bool Read(const value_t& value, const std::string& name, vec2& data);
-	bool Read(const value_t& value, const std::string& name, vec3& data);
+	bool Read(const value_t& value, const std::string& name, bool& data, bool required = false);
+	bool Read(const value_t& value, const std::string& name, int& data, bool required = false);
+	bool Read(const value_t& value, const std::string& name, float& data, bool required = false);
+	bool Read(const value_t& value, const std::string& name, std::string& data, bool required = false);
+	bool Read(const value_t& value, const std::string& name, vec2& data, bool required = false);
+	bool Read(const value_t& value, const std::string& name, vec3& data, bool required = false);
 
 
 }

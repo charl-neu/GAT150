@@ -42,3 +42,7 @@ void Rocket::onCollision(viper::Actor* other)
 		}
 	}
 }
+
+void Rocket::update(float deltaTime)
+{
+}

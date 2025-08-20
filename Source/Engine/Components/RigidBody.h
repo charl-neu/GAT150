@@ -11,6 +11,6 @@ namespace viper {
 		vec2 velocity{ 0.0f, 0.0f }; 
 	public:
 		void update(float deltaTime) override;
-
+		void Read(const json::value_t& value);
 	};
 }

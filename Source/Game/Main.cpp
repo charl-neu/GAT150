@@ -20,7 +20,6 @@ int main(int argc, char* argv[]) {
 	auto spriteRenderer = viper::Factory::Instance().Create<viper::SpriteRenderer>("SpriteRenderer");
 	auto meshRenderer = viper::Factory::Instance().Create<viper::MeshRenderer>("MeshRenderer");
 
-	return 0;
 
     //init engine
 	viper::GetEngine().Initialize();

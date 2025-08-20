@@ -19,3 +19,9 @@ bool viper::CircleCollider2d::CheckCollision(const ColliderComponent& other) con
 	}
     return false;
 }
+
+void viper::CircleCollider2d::Read(const rapidjson::Value& value)
+{
+	Object::Read(value);
+	JSON_READ(value, radius);
+}

@@ -11,5 +11,6 @@ namespace viper
 		// Inherited via ColliderComponent
 		void update(float deltaTime) override;
 		bool CheckCollision(const ColliderComponent& other) const override;
+		void Read(const rapidjson::Value& value);
 	};
 }

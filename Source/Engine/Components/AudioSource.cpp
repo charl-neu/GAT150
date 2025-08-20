@@ -3,7 +3,7 @@
 #include "Engine.h"
 
 namespace viper {
-	FACTORY_REGISTER(AudioSource)
+	FACTORY_REGISTER(AudioSource);
 
 	void AudioSource::update(float deltaTime)
 	{

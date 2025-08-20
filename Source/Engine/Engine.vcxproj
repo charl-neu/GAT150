@@ -189,7 +189,6 @@
     <ClCompile Include="Core\Time.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Game\Actor.cpp" />
-    <ClCompile Include="Game\Game.cpp" />
     <ClCompile Include="Game\Object.cpp" />
     <ClCompile Include="Game\Scene.cpp" />
     <ClCompile Include="Input\Input System.cpp" />

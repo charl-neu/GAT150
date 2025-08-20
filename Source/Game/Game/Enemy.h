@@ -19,4 +19,8 @@ public:
 	void onCollision(viper::Actor* other);
 private:
 
+
+	// Inherited via Component
+	void update(float deltaTime) override;
+
 };

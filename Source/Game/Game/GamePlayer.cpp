@@ -4,16 +4,16 @@
 #include "GameData.h"
 #include "GameGame.h"
 
-FACTORY_REGISTER(Player)
+	FACTORY_REGISTER(Player)
 
 void Player::Update(float deltaTime)
 {
-	/*
+	
 	auto rigidBody = GetComponent<viper::RigidBody>();
 
 	if (rigidBody->velocity.Length()) {
 		viper::Particle particle;
-		particle.position = transform.position;
+		particle.position = owner->transform.position;
 		particle.velocity = viper::vec2{ -(rigidBody->velocity.x) + viper::random::getReal() * 100 - 50, -(rigidBody->velocity.y) + viper::random::getReal() * 100 - 50 };
 		particle.color = viper::vec3{ 1.0f, 1.0f, 1.0f };
 		particle.lifetime = .25f * (viper::random::getReal() * 2);
@@ -32,7 +32,7 @@ void Player::Update(float deltaTime)
 		rotate = 1;
 	}
 
-	transform.rotation += rotate * deltaTime * angularVel;
+	owner->transform.rotation += rotate * deltaTime * angularVel;
 
 
 
@@ -46,13 +46,14 @@ void Player::Update(float deltaTime)
 
 
 	viper::vec2 direction{ 1, 0 };
-	viper::vec2 force = direction.Rotate(viper::DegToRad(transform.rotation)) * accel;
+	viper::vec2 force = direction.Rotate(viper::DegToRad(owner->transform.rotation)) * accel;
 	if (rigidBody) {
 		rigidBody->velocity += force * thrust * deltaTime;
 	}
-	transform.position.x = viper::Wrap(transform.position.x, 0.0f, 1280.0f);
-	transform.position.y = viper::Wrap(transform.position.y, 0.0f, 1024.0f);
+	owner->transform.position.x = viper::Wrap(owner->transform.position.x, 0.0f, 1280.0f);
+	owner->transform.position.y = viper::Wrap(owner->transform.position.y, 0.0f, 1024.0f);
 
+	/*
 	if (viper::GetEngine().GetInputSystem().GetKeyPressed(SDL_SCANCODE_SPACE)) {
 		if(firetimer <= 0.0f) {
 			auto sound = viper::Resources().Get<viper::AudioClip>("bass.wav", viper::GetEngine().GetAudioSystem());
@@ -107,4 +108,8 @@ void Player::onCollision(viper::Actor* other)
 			dynamic_cast<SpaceGame*>(owner->scene->GetGame())->OnPlayerDeath();
 		}
 	}
+}
+
+void Player::update(float deltaTime)
+{
 }

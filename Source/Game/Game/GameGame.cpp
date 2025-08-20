@@ -54,6 +54,8 @@ void SpaceGame::Update(float dt)
 	{
 		m_scene->RemoveAllActors();
 
+
+
 		/*
 		viper::Transform transform;
 		transform.position = { 500,500 };
@@ -118,6 +120,7 @@ void SpaceGame::Update(float dt)
 
 void SpaceGame::Draw(viper::Renderer& renderer)
 {
+	m_scene->Draw(renderer);
 	if (m_gameState == GameState::Title) {
 		m_titleText->Create(renderer, "That One Bad Area", viper::vec3{ 1.0f, 1.0f, 1.0f });
 		m_titleText->Draw(renderer, (float)renderer.GetWidth() * .125f, (float)renderer.GetHeight() * .1f);
@@ -149,7 +152,6 @@ void SpaceGame::Draw(viper::Renderer& renderer)
 		m_healthText->Draw(renderer, (float)renderer.GetWidth() * .01f, (float)renderer.GetHeight() * .09f);
 	}
 
-	m_scene->Draw(renderer);
 
 	viper::GetEngine().GetParticleSystem().Draw(renderer);
 }
