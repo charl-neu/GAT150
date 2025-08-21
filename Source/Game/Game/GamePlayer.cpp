@@ -1,15 +1,16 @@
+#include "../GamePCH.h"
 #include "GamePlayer.h"
 #include "Rocket.h"
 #include "Engine.h"
 #include "GameData.h"
 #include "GameGame.h"
 
-	FACTORY_REGISTER(Player)
+FACTORY_REGISTER(Player)
 
 void Player::Update(float deltaTime)
 {
 	
-	auto rigidBody = GetComponent<viper::RigidBody>();
+	auto rigidBody = owner->GetComponent<viper::RigidBody>();
 
 	if (rigidBody->velocity.Length()) {
 		viper::Particle particle;
