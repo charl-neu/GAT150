@@ -54,6 +54,8 @@ void SpaceGame::Update(float dt)
 	{
 		m_scene->RemoveAllActors();
 
+		auto player = viper::Instantiate("Player");
+		m_scene->AddActor(std::move(player));
 
 
 		/*
@@ -163,6 +165,18 @@ void SpaceGame::OnPlayerDeath()
 }
 
 void SpaceGame::SpawnEnemy() {
+	viper::Actor* player = m_scene->GetActorByName<viper::Actor>("Player");
+	if (!player) {
+		return; // No player found, do not spawn enemies
+	}
+
+	viper::vec2 playerPosition = player->transform.position;
+	viper::vec2 spawnPosition = playerPosition + viper::random::onUnitCircle() * viper::random::getReal(200.0f, 500.0f);
+	viper::Transform transform{ spawnPosition, viper::random::getReal(0.0f, 360.0f), 20.5f };
+	
+	auto enemy = viper::Instantiate("BEnemy", transform);
+	m_scene->AddActor(std::move(enemy));
+	
 	/*
 	Player* player = m_scene->GetActorByName<Player>("Player");
 	if (player) {

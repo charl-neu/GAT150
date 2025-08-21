@@ -10,6 +10,7 @@ public:
 	int health = 3;
 public:
 	Player() = default;
+	CLASS_PROTOTYPE(Player)
 
 	void Update(float deltaTime);
 	

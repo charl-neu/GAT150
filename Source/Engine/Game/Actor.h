@@ -12,6 +12,7 @@ namespace viper {
 	public:
 		std::string tag;
 		float lifespan{ -1.0f }; 
+		bool persistent{ false }; // if true, actor will not be destroyed when the scene is cleared
 
 		Transform transform{ {0, 0}, 0, 1 };
 
@@ -24,6 +25,9 @@ namespace viper {
 			transform{ transform }
 		{
 		}
+		Actor(const Actor& other);
+
+		CLASS_PROTOTYPE(Actor)
 
 		virtual void Update(float deltaTime);
 		virtual void Draw(class Renderer& renderer);

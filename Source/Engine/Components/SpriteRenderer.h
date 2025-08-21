@@ -10,6 +10,7 @@ namespace viper {
 		void update(float deltaTime) override;
 		void Draw(Renderer& renderer) override;
 
+		CLASS_PROTOTYPE(SpriteRenderer)
 
 		void Read(const json::value_t& value) override;
 

@@ -76,12 +76,31 @@ namespace viper {
 		m_actors.push_back(std::move(actor));
 	}
 
-	void Scene::RemoveAllActors() {
-		m_actors.clear();
+	void Scene::RemoveAllActors(bool force) {
+		for (auto iterator = m_actors.begin(); iterator != m_actors.end();) {
+			if (((*iterator)->persistent) && (force = true)) {
+				++iterator; 
+			}
+			else {
+				iterator = m_actors.erase(iterator); // Remove non-persistent actors
+			}
+		}
 	}
 
 	void Scene::Read(const json::value_t& value)
 	{
+		//read prototypes
+		if (JSON_HAS(value, prototypes)) {
+			for (auto& actorValue : JSON_GET(value, prototypes).GetArray()) {
+				auto actor = Factory::Instance().Create<Actor>("Actor");
+				actor->Read(actorValue);
+
+
+				std::string name = actor->name;
+				Factory::Instance().RegisterPrototype<Actor>(name, std::move(actor));
+			}
+		}
+
 		if (JSON_HAS(value, actors)) {
 			for (auto& actorValue : JSON_GET(value, actors).GetArray()) {
 				auto actor = Factory::Instance().Create<Actor>("Actor");

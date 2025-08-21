@@ -90,4 +90,5 @@ void Enemy::onCollision(viper::Actor* other)
 
 void Enemy::update(float deltaTime)
 {
+
 }

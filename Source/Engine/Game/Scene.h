@@ -19,7 +19,7 @@ namespace viper {
 		void Draw(class Renderer& renderer);
 
 		void AddActor(std::unique_ptr<class Actor> actor);
-		void RemoveAllActors();
+		void RemoveAllActors(bool force = false);
 
 		template<typename T = Actor>
 		T* GetActorByName(const std::string& name);

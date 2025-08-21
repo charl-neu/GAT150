@@ -13,10 +13,10 @@
 
 int main(int argc, char* argv[]) {
 
+
     //set the file path
     viper::file::SetCurrentDirectory("Assets");
-    //viper::Factory::Instance().
-
+    
 	auto spriteRenderer = viper::Factory::Instance().Create<viper::SpriteRenderer>("SpriteRenderer");
 	auto meshRenderer = viper::Factory::Instance().Create<viper::MeshRenderer>("MeshRenderer");
 

@@ -9,8 +9,10 @@ namespace viper {
 	public:
 		std::string audioClipName;
 
-	private:
-		void Play();
+	public:
+		CLASS_PROTOTYPE(AudioSource)
+
 		void update(float deltaTime) override;
+		void Play();
 	};
 }

@@ -13,7 +13,7 @@ public:
 	int m_points = 100;
 public:
 	Enemy() = default;
-
+	CLASS_PROTOTYPE(Enemy)
 
 	void Update(float deltaTime);
 	void onCollision(viper::Actor* other);

@@ -7,6 +7,7 @@ namespace viper
 	{
 	public:
 		float radius{ 50.0f }; 
+		CLASS_PROTOTYPE(CircleCollider2d)
 
 		// Inherited via ColliderComponent
 		void update(float deltaTime) override;
