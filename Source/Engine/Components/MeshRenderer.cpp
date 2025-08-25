@@ -8,7 +8,7 @@ namespace viper
 {
 	FACTORY_REGISTER(MeshRenderer)
 
-	void MeshRenderer::update(float deltaTime)
+	void MeshRenderer::Update(float deltaTime)
 	{
 
 	}

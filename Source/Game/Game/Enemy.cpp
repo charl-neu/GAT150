@@ -3,8 +3,14 @@
 #include "GameData.h"
 #include "Rocket.h"
 
-FACTORY_REGISTER(Enemy)
 
+FACTORY_REGISTER(Enemy) 
+
+
+void Enemy::Start()
+{
+	m_rigidBody = owner->GetComponent<viper::RigidBody>();
+}
 
 void Enemy::Update(float deltaTime)
 {
@@ -88,7 +94,7 @@ void Enemy::onCollision(viper::Actor* other)
 	}
 }
 
-void Enemy::update(float deltaTime)
+void Enemy::Update(float deltaTime)
 {
 
 }

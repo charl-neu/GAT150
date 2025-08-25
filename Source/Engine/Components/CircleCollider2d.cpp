@@ -3,7 +3,7 @@
 namespace viper {
 	FACTORY_REGISTER(CircleCollider2d)
 
-	void CircleCollider2d::update(float deltaTime)
+	void CircleCollider2d::Update(float deltaTime)
 	{
 		//
 	}

@@ -5,7 +5,7 @@
 namespace viper {
 	FACTORY_REGISTER(AudioSource);
 
-	void AudioSource::update(float deltaTime)
+	void AudioSource::Update(float deltaTime)
 	{
 
 	}

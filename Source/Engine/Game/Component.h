@@ -7,6 +7,9 @@ namespace viper {
 		class Actor* owner{ nullptr };
 	public:
 		Component() = default;
-		virtual void update(float deltaTime) = 0;
+
+		virtual void Start();
+		virtual void Destroyed();
+		virtual void Update(float deltaTime) = 0;
 	};
 }

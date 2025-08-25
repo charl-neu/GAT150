@@ -13,8 +13,8 @@
       "components": [
         {
           "type": "Player",
-          "accel": 0,
-          "angularVel": 0,
+          "accel": 50,
+          "angularVel": 50,
           "health": 3,
           "firetimer": 0,
           "invincibilityTimer": 0
@@ -51,10 +51,10 @@
         {
           "type": "Enemy",
           "accel": 50,
-          "angularVel": 50,
-          "health": 3,
-          "firetimer": 0,
-          "invincibilityTimer": 0
+          "angularVel": 90,
+          "firetimer": 3.0,
+          "maxfire": 5.0
+          "m_score": 100
         },
         {
           "type": "SpriteRenderer",
@@ -62,7 +62,7 @@
         },
         {
           "type": "RigidBody",
-          "damping": 1.5,
+          "damping": 0.5,
           "velocity": [
             0,
             0

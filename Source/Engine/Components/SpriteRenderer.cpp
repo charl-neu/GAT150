@@ -1,12 +1,17 @@
 #include "SpriteRenderer.h"
 #include "Renderer/Renderer.h"
-
+#include "Renderer/Texture.h"
 
 namespace viper
 {
 	FACTORY_REGISTER(SpriteRenderer)
 
-	void SpriteRenderer::update(float deltaTime)
+	void SpriteRenderer::Start()
+	{
+		texture = Resources().Get<Texture>(textureName, GetEngine().GetRenderer());
+	}
+
+	void SpriteRenderer::Update(float deltaTime)
 	{
 
 	}

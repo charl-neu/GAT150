@@ -111,6 +111,3 @@ void Player::onCollision(viper::Actor* other)
 	}
 }
 
-void Player::update(float deltaTime)
-{
-}

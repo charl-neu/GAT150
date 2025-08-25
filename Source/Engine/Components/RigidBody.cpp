@@ -3,7 +3,7 @@
 namespace viper {
 	FACTORY_REGISTER(RigidBody)
 
-	void RigidBody::update(float deltaTime)
+	void RigidBody::Update(float deltaTime)
 	{
 
 		owner->transform.position += velocity * deltaTime;

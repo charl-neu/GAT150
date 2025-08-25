@@ -1,5 +1,6 @@
 #include "Mesh.h"
 #include "Renderer.h"
+#include "../Game/Scene.h"
 
 
 namespace viper{
@@ -30,6 +31,8 @@ namespace viper{
 		}
 		return true;
 	}
+
+
 
 	/// <summary>
 	/// Draws the model by rendering lines between its points using the specified renderer.

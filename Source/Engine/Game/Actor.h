@@ -29,10 +29,15 @@ namespace viper {
 
 		CLASS_PROTOTYPE(Actor)
 
+		void Read(const json::value_t& value) override;
+
+
+		virtual void Start();
+		virtual void Destroyed();
 		virtual void Update(float deltaTime);
 		virtual void Draw(class Renderer& renderer);
 
-		virtual void onCollision(Actor* other) {}
+		virtual void onCollision(Actor* other);
 
 		//components
 
@@ -44,7 +49,6 @@ namespace viper {
 		template<typename T>
 		std::vector<T*> GetComponents();
 
-		void Read(const json::value_t& value) override;
 
 	protected:
 		std::vector < std::unique_ptr <Component >> m_components;

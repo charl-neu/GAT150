@@ -10,7 +10,7 @@ namespace viper
 		CLASS_PROTOTYPE(CircleCollider2d)
 
 		// Inherited via ColliderComponent
-		void update(float deltaTime) override;
+		void Update(float deltaTime) override;
 		bool CheckCollision(const ColliderComponent& other) const override;
 		void Read(const rapidjson::Value& value);
 	};

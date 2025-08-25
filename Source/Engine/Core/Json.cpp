@@ -34,7 +34,7 @@ namespace viper::json
 
     bool Read(const value_t& value, const std::string& name, int& data, bool required) {
         // check if the value has the "<name>" and the correct data type
-        if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsInt()) {
+        if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsNumber()) {
             if (required) {
                 Logger::Error("Could not read Json value (int): {}.", name);
             }

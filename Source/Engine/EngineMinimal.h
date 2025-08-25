@@ -16,6 +16,9 @@
 #include "Game/Game.h"
 #include "Game/Object.h"
 
+//physics
+#include "Physics/Collidable.h"
+
 //math
 #include "Math/Math.h"
 #include "Math/Vector2.h"
@@ -28,6 +31,11 @@
 #include "Components/SpriteRenderer.h"
 #include "Components/RigidBody.h"
 #include "Components/CircleCollider2d.h"
+
+//events
+#include "Event/Event.h"
+#include "Event/Observer.h"
+#include "Event/Event Manager.h"
 
 //resources
 #include "Resources/Resource.h"

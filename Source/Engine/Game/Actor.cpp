@@ -20,6 +20,29 @@ namespace viper {
 
 	}
 
+	void Actor::Start()
+	{
+		for (auto& component : m_components) {
+			component->Start();
+		}
+	}
+
+	void Actor::Destroyed()
+	{
+		for (auto& component : m_components) {
+			component->Destroyed();
+		}
+	}
+
+	void Actor::onCollision(Actor* other)
+	{
+		//to be overridden
+		auto collidables = GetComponents<class ICollidable>();
+		for (auto& collidable : collidables) {
+			collidable->onCollision(other);
+		}
+	}
+
 	/// <summary>
 	/// Updates the actor's state based on the elapsed time.
 	/// </summary>
@@ -40,7 +63,7 @@ namespace viper {
 		//update all components
 		for (auto& component : m_components) {
 			if (component->active) {
-				component->update(deltaTime);
+				component->Update(deltaTime);
 			}
 		}
 

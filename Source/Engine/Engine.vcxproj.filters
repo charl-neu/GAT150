@@ -33,6 +33,12 @@
     <Filter Include="Source\Components">
       <UniqueIdentifier>{3448e381-5478-445e-90ec-8615e72e85af}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Physics">
+      <UniqueIdentifier>{24388abd-2971-4fd3-a7ff-39588c014600}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Event">
+      <UniqueIdentifier>{154c6de4-4221-4e35-bd1a-55f861273f76}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -103,6 +109,9 @@
     </ClCompile>
     <ClCompile Include="Components\CircleCollider2d.cpp">
       <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Event\Event Manager.cpp">
+      <Filter>Source\Event</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -222,6 +231,18 @@
     </ClInclude>
     <ClInclude Include="Core\Serializable.h">
       <Filter>Source\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Collidable.h">
+      <Filter>Source\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Event\Observer.h">
+      <Filter>Source\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Event\Event.h">
+      <Filter>Source\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Event\Event Manager.h">
+      <Filter>Source\Event</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

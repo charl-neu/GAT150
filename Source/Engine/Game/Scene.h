@@ -10,15 +10,18 @@ namespace viper {
 	class Game;
 
 
-	class Scene : public Serializable
+	class Scene : public ISerializable
 	{
 	public:
 		Scene(Game* game) : m_game(game) {}
 
+		bool Load(const std::string& scenename);
+		void Read(const json::value_t& value) override;
+
 		void Update(float deltaTime);
 		void Draw(class Renderer& renderer);
 
-		void AddActor(std::unique_ptr<class Actor> actor);
+		void AddActor(std::unique_ptr<class Actor> actor, bool start);
 		void RemoveAllActors(bool force = false);
 
 		template<typename T = Actor>
@@ -29,7 +32,6 @@ namespace viper {
 
 		Game* GetGame() const { return m_game; }
 
-		void Read(const json::value_t& value) override;
 		
 	private:
 		Game* m_game{ nullptr };

@@ -12,7 +12,7 @@ namespace viper {
 	public:
 		CLASS_PROTOTYPE(AudioSource)
 
-		void update(float deltaTime) override;
+		void Update(float deltaTime) override;
 		void Play();
 	};
 }

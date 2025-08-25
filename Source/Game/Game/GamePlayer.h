@@ -2,7 +2,7 @@
 #include "../../Engine/Game/Component.h"
 
 
-class Player : public viper::Component
+class Player : public viper::Component, public viper::ICollidable
 {
 public:
 	float accel = 200;
@@ -12,17 +12,16 @@ public:
 	Player() = default;
 	CLASS_PROTOTYPE(Player)
 
-	void Update(float deltaTime);
 	
 public:
 	float firetimer = 0.0f;
 	float invincibilityTimer = 0.0f;
 
 	// Inherited via Actor
-	void onCollision(viper::Actor* other);
+	void onCollision(viper::ICollidable* other) override;
 
 	// Inherited via Component
-	void update(float deltaTime) override;
+	void Update(float deltaTime) override;
 
 	void Read(const viper::json::value_t& value) override {
 		Object::Read(value);
