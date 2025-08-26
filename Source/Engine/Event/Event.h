@@ -10,7 +10,7 @@ namespace viper
 
 		id_t id;
 		data_t data;
-	
+
 		Event(const id_t& id, data_t data = 0) : id{ id }, data{ data } {}
 	};
 }
