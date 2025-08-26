@@ -3,6 +3,7 @@
 #include "Audio/Audio System.h"
 #include "Input/Input System.h"
 #include "Renderer/Particle System.h"
+#include "Event/Event Manager.h"
 
 namespace viper
 {
@@ -28,6 +29,8 @@ namespace viper
 	void Engine::Shutdown() 
 	{
 		Resources().Clear();
+
+		EventManager::Instance().RemoveAll();
 
 		if (m_particleSystem) {
 			m_particleSystem->Shutdown();

@@ -9,6 +9,8 @@ FACTORY_REGISTER(Enemy)
 
 void Enemy::Start()
 {
+	viper::EventManager::Instance().AddObserver("Player_dead", *this);
+
 	m_rigidBody = owner->GetComponent<viper::RigidBody>();
 }
 
@@ -66,7 +68,7 @@ void Enemy::onCollision(viper::Actor* other)
 	if (other->tag != owner->tag && other->tag != "rockete" && owner->name != "IEnemy")
 	{
 		owner->destroyed = true;
-		owner->scene->GetGame()->AddPoints(m_points);
+		viper::EventManager::Instance().Notify({ "add_pts", m_points });
 		for (int i = 0; i < 100; i++)
 		{
 			viper::Particle particle;
@@ -77,5 +79,9 @@ void Enemy::onCollision(viper::Actor* other)
 			viper::GetEngine().GetParticleSystem().AddParticle(particle);
 		}
 	}
+}
+
+void Enemy::OnNotify(const viper::Event& event)
+{
 }
 

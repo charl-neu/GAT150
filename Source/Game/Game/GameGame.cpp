@@ -1,3 +1,4 @@
+
 #include "GameGame.h"
 #include "GamePlayer.h"
 #include "Enemy.h"
@@ -5,11 +6,15 @@
 #include "../../Engine/Game/Scene.h"
 
 
+
 #include <vector>
 
 
 bool SpaceGame::Initialize()
 {
+	OBSERVER_ADD(Player_dead);
+		OBSERVER_ADD(add_pts);
+
 	m_scene = std::make_unique<viper::Scene>(this);
 	m_scene->Load("Scene.json");
 
@@ -194,4 +199,18 @@ void SpaceGame::SpawnEnemy() {
 	}
 
 
+}
+
+
+
+void SpaceGame::OnNotify(const viper::Event& event)
+{
+	std::cout << event.id << std::endl;
+
+	if (viper::equalsIgnoreCase(event.id, "add_pts")) {
+		AddPoints(std::get<int>(event.data));
+
+	} else if (event.id == "Player_dead") {
+		OnPlayerDeath();
+	}
 }

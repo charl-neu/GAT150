@@ -88,7 +88,8 @@ void Player::onCollision(viper::Actor* other)
 		if (health <= 0) {
 			owner->destroyed = true;
 			invincibilityTimer = 2.0f; // Start invincibility timer
-			dynamic_cast<SpaceGame*>(owner->scene->GetGame())->OnPlayerDeath();
+			viper::EventManager::Instance().Notify(viper::Event{ "Player_dead", true });
+			//dynamic_cast<SpaceGame*>(owner->scene->GetGame())->OnPlayerDeath();
 		}
 	}
 }

@@ -1,5 +1,8 @@
 #include "Event Manager.h"
 #include "Core/StringHelperr.h"
+#include "Core/Logger.h"
+
+
 
 namespace viper
 {
@@ -11,7 +14,7 @@ namespace viper
 	{
 		IObserver* obsPtr = &observer;
 
-		for (auto eventType: m_observers) {
+		for (auto& eventType: m_observers) {
 			auto& observers = eventType.second;
 
 			std::erase_if(observers, [obsPtr](auto observer) {
@@ -22,5 +25,19 @@ namespace viper
 
 	void EventManager::Notify(const Event& event)
 	{
+		auto it = m_observers.find(toLower(event.id));
+		if (it != m_observers.end()) {
+			auto& observers = it->second;
+			for (auto& observer : observers) {
+				observer->OnNotify(event);
+			}
+		}
+		else {
+			Logger::Warning("Could not find event {}", event.id);
+		}
+	}
+	void EventManager::RemoveAll()
+	{
+
 	}
 }

@@ -2,8 +2,10 @@
 #include "../../Engine/Game/Component.h"
 #include "../../Engine/Components/RigidBody.h"
 #include "../../Engine/Physics/Collidable.h"
+#include "../../Engine/Event/Observer.h"
+#include "../../Engine/Event/Event.h"
 
-class Enemy : public viper::Component, public viper::ICollidable
+class Enemy : public viper::Component, public viper::ICollidable, public viper::IObserver
 {
 public:
 	float accel = 200;
@@ -31,4 +33,7 @@ private:
 		JSON_READ(value, maxfire);
 		JSON_READ(value, m_points);
 	}
+
+	// Inherited via IObserver
+	void OnNotify(const viper::Event& event) override;
 };

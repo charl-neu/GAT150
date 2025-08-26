@@ -3,10 +3,11 @@
 #include <memory>
 #include "Renderer/Font.h"
 #include "Renderer/Text.h"
+#include "Event/Observer.h"
 
 
 
-class SpaceGame : public viper::Game
+class SpaceGame : public viper::Game, public viper::IObserver
 {
 public:
 	enum class GameState
@@ -46,4 +47,7 @@ private:
 	std::unique_ptr<viper::Text> m_livesText;
 	std::unique_ptr<viper::Text> m_healthText;
 	std::unique_ptr<viper::Text> m_multText;
+
+	// Inherited via IObserver
+	void OnNotify(const viper::Event& event) override;
 };

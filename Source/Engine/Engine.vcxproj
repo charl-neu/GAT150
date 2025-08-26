@@ -189,6 +189,7 @@
     <ClCompile Include="Core\Time.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Event\Event Manager.cpp" />
+    <ClCompile Include="Event\Observer.cpp" />
     <ClCompile Include="Game\Actor.cpp" />
     <ClCompile Include="Game\Object.cpp" />
     <ClCompile Include="Game\Scene.cpp" />
@@ -226,6 +227,7 @@
     <ClInclude Include="Event\Event Manager.h" />
     <ClInclude Include="Event\Event.h" />
     <ClInclude Include="Event\Observer.h" />
+    <ClInclude Include="Event\Physics.h" />
     <ClInclude Include="Game\Actor.h" />
     <ClInclude Include="Game\Component.h" />
     <ClInclude Include="Game\Game.h" />
