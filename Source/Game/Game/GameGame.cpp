@@ -50,9 +50,13 @@ void SpaceGame::Update(float dt)
 	{
 		m_scene->RemoveAllActors();
 
-		auto player = viper::Instantiate("Player");
-		//put the player in the center of the screen
-		player->transform.position = { viper::GetEngine().GetRenderer().GetWidth() / 2.0f, viper::GetEngine().GetRenderer().GetHeight() / 2.0f };
+		//instantiate player at the center of the screen
+
+		viper::Transform transform;
+		transform.position = viper::vec2{ viper::GetEngine().GetRenderer().GetWidth() / 2.0f, viper::GetEngine().GetRenderer().GetHeight() / 2.0f };
+		auto player = viper::Instantiate("Player", transform);
+		//put player in the center of the screen
+		
 		m_scene->AddActor(std::move(player), true);
 		
 
@@ -158,7 +162,6 @@ void SpaceGame::SpawnEnemy() {
 		//normal enemy
 		viper::Transform transform{ spawnPosition, viper::random::getReal(0.0f, 360.0f), 1.5f };
 		auto enemy = viper::Instantiate("BEnemy", transform);
-		enemy->tag = "enemy";
 		m_scene->AddActor(std::move(enemy), true);
 		break;
 	}
@@ -167,7 +170,6 @@ void SpaceGame::SpawnEnemy() {
 		//speeder
 		viper::Transform transform{ spawnPosition, viper::random::getReal(0.0f, 360.0f), 1.5f };
 		auto enemy = viper::Instantiate("SEnemy", transform);
-		enemy->tag = "enemy";
 		m_scene->AddActor(std::move(enemy), true);
 		break;
 	}
@@ -176,7 +178,6 @@ void SpaceGame::SpawnEnemy() {
 		//tank
 		viper::Transform transform{ spawnPosition, viper::random::getReal(0.0f, 360.0f), 3.5f };
 		auto enemy = viper::Instantiate("TEnemy", transform);
-		enemy->tag = "enemy";
 		m_scene->AddActor(std::move(enemy), true);
 		break;
 	}
@@ -185,7 +186,6 @@ void SpaceGame::SpawnEnemy() {
 		//snail
 		viper::Transform transform{ spawnPosition, viper::random::getReal(0.0f, 360.0f), 0.5f };
 		auto enemy = viper::Instantiate("IEnemy", transform);
-		enemy->tag = "enemy";
 		m_scene->AddActor(std::move(enemy), true);
 		break;
 	}

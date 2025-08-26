@@ -52,7 +52,6 @@ void Enemy::Update(float deltaTime)
 	if (firetimer <= 0.0f && playerFound && maxfire > 0) {
 		viper::Transform transform{ owner->transform.position, owner->transform.rotation, 0.5f };
 		auto rock = viper::Instantiate("Rockete", transform);
-		rock->tag = "rockete";
 		owner->scene->AddActor(std::move(rock), true);
 		firetimer = maxfire;
 

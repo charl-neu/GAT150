@@ -262,22 +262,6 @@
     }
   ],
   "actors": [
-    {
-      "name": "sprite",
-      "transform": {
-        "position": [
-          400,
-          300
-        ],
-        "rotation": 30,
-        "scale": 2
-      },
-      "components": [
-        {
-          "type": "SpriteRenderer",
-          "textureName": "vacationmemories.png"
-        }
-      ]
-    }
+
   ]
 }
