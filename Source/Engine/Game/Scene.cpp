@@ -20,8 +20,8 @@ namespace viper {
 
 
 		/// Remove actors that are marked as destroyed
-		std::erase_if(m_actors, [](auto& actor)) {
-			return (actor-> destroyed);
+		std::erase_if(m_actors, [](auto& actor) {
+			return (actor->destroyed);
 		});
 		/*
 		for (auto it = m_actors.begin(); it != m_actors.end();)
@@ -80,7 +80,6 @@ namespace viper {
 			for (auto& actorValue : JSON_GET(value, prototypes).GetArray()) {
 				auto actor = Factory::Instance().Create<Actor>("Actor");
 				actor->Read(actorValue);
-
 
 				std::string name = actor->name;
 				Factory::Instance().RegisterPrototype<Actor>(name, std::move(actor));

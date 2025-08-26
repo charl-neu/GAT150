@@ -14,7 +14,7 @@ namespace viper
 		for (auto eventType: m_observers) {
 			auto& observers = eventType.second;
 
-			std::erase_if(observers, [obsPtr](auto observer)) {
+			std::erase_if(observers, [obsPtr](auto observer) {
 				return (observer == obsPtr);
 			});
 		}

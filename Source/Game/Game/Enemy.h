@@ -1,8 +1,7 @@
 #pragma once
 #include "../../Engine/Game/Component.h"
 #include "../../Engine/Components/RigidBody.h"
-
-
+#include "../../Engine/Physics/Collidable.h"
 
 class Enemy : public viper::Component, public viper::ICollidable
 {
@@ -19,14 +18,10 @@ public:
 	CLASS_PROTOTYPE(Enemy)
 
 	void Start() override;
-	void Update(float deltaTime);
-	void onCollision(viper::ICollidable* other) override;
-private:
-
-
-	// Inherited via Component
 	void Update(float deltaTime) override;
+	void onCollision(viper::Actor* other) override;
 
+private:
 	void Read(const viper::json::value_t& value) override {
 		Object::Read(value);
 

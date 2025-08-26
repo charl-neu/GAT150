@@ -54,7 +54,7 @@ void Player::Update(float deltaTime)
 	owner->transform.position.x = viper::Wrap(owner->transform.position.x, 0.0f, 1280.0f);
 	owner->transform.position.y = viper::Wrap(owner->transform.position.y, 0.0f, 1024.0f);
 
-	/*
+	
 	if (viper::GetEngine().GetInputSystem().GetKeyPressed(SDL_SCANCODE_SPACE)) {
 		if(firetimer <= 0.0f) {
 			auto sound = viper::Resources().Get<viper::AudioClip>("bass.wav", viper::GetEngine().GetAudioSystem());
@@ -62,40 +62,22 @@ void Player::Update(float deltaTime)
 				viper::GetEngine().GetAudioSystem().PlaySound(*sound);
 			}
 			
-			viper::Transform transform;
-			transform.position = this->transform.position;
-			transform.rotation = this->transform.rotation;
-			transform.scale = 0.5f;
-			auto rocket = std::make_unique<Rocket>(transform); // viper::Resources().Get<viper::Texture>("missile-1.png", viper::GetEngine().GetRenderer()));
-			rocket->accel = 600.0f;
-			rocket->name = "rocket";
-			rocket->tag = "rocket";
-			rocket->lifespan = 1.5f;
+			viper::Transform transform{ owner->transform.position, owner->transform.rotation, 0.5f };
+			auto rock = viper::Instantiate("Rocketp", transform);
+			owner->scene->AddActor(std::move(rock), true);
 
-			auto spriteRenderer = std::make_unique<viper::SpriteRenderer>();
-			spriteRenderer->textureName = "missile-1.png";
-			rocket->AddComponent(std::move(spriteRenderer));
+			firetimer = 0.25f;
 
-
-			auto rigidBody = std::make_unique<viper::RigidBody>();
-			rigidBody->damping = 0.0f;
-			rocket->AddComponent(std::move(rigidBody));
-
-			auto collider = std::make_unique<viper::CircleCollider2d>();
-			collider->radius = 10.0f;
-			rocket->AddComponent(std::move(collider));
-
-			scene->AddActor(std::move(rocket));
-			firetimer = 0.2f;
-			// TODO: Firing Sound viper::GetEngine().GetAudioSystem().PlaySound("fire");
+			
 		}
 	}
+	
 
 	firetimer -= deltaTime;
 	invincibilityTimer -= deltaTime;
+	
 
-	Actor::Update(deltaTime);
-	*/
+
 
 }
 

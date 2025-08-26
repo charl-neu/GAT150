@@ -1,6 +1,7 @@
 #include "SpriteRenderer.h"
 #include "Renderer/Renderer.h"
 #include "Renderer/Texture.h"
+#include "Engine.h"
 
 namespace viper
 {

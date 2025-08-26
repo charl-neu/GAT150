@@ -2,6 +2,7 @@
   "prototypes": [
     {
       "name": "Player",
+      "tag": "player",
       "transform": {
         "position": [
           400,
@@ -13,8 +14,8 @@
       "components": [
         {
           "type": "Player",
-          "accel": 50,
-          "angularVel": 50,
+          "accel": 350,
+          "angularVel": 150,
           "health": 3,
           "firetimer": 0,
           "invincibilityTimer": 0
@@ -25,7 +26,7 @@
         },
         {
           "type": "RigidBody",
-          "damping": 1.5,
+          "damping": 0.75,
           "velocity": [
             0,
             0
@@ -33,27 +34,28 @@
         },
         {
           "type": "CircleCollider2d",
-          "radius": 50
+          "radius": 25
         }
       ]
     },
     {
       "name": "BEnemy",
+      "tag": "enemy",
       "transform": {
         "position": [
           400,
           300
         ],
         "rotation": 0,
-        "scale": 1
+        "scale": 0.10
       },
       "components": [
         {
           "type": "Enemy",
-          "accel": 50,
+          "accel": 150,
           "angularVel": 90,
           "firetimer": 3.0,
-          "maxfire": 5.0
+          "maxfire": 2.0,
           "m_score": 100
         },
         {
@@ -70,7 +72,191 @@
         },
         {
           "type": "CircleCollider2d",
-          "radius": 50
+          "radius": 30
+        }
+      ]
+    },
+    {
+      "name": "SEnemy",
+      "tag": "enemy",
+      "transform": {
+        "position": [
+          400,
+          300
+        ],
+        "rotation": 0,
+        "scale": 0.1
+      },
+      "components": [
+        {
+          "type": "Enemy",
+          "accel": 500,
+          "angularVel": 90,
+          "firetimer": -1,
+          "maxfire": -1,
+          "m_score": 200
+        },
+        {
+          "type": "SpriteRenderer",
+          "textureName": "greyblue_04.png"
+        },
+        {
+          "type": "RigidBody",
+          "damping": 1.5,
+          "velocity": [
+            0,
+            0
+          ]
+        },
+        {
+          "type": "CircleCollider2d",
+          "radius": 30
+        }
+      ]
+    },
+    {
+      "name": "TEnemy",
+      "tag": "enemy",
+      "transform": {
+        "position": [
+          400,
+          300
+        ],
+        "rotation": 0,
+        "scale": 0.1
+      },
+      "components": [
+        {
+          "type": "Enemy",
+          "accel": 50,
+          "angularVel": 90,
+          "firetimer": 2,
+          "maxfire": 0.5,
+          "m_score": 250
+        },
+        {
+          "type": "SpriteRenderer",
+          "textureName": "tankbase_03.png"
+        },
+        {
+          "type": "RigidBody",
+          "damping": 1.5,
+          "velocity": [
+            0,
+            0
+          ]
+        },
+        {
+          "type": "CircleCollider2d",
+          "radius": 60
+        }
+      ]
+    },
+    {
+      "name": "IEnemy",
+      "tag": "enemy",
+      "transform": {
+        "position": [
+          400,
+          300
+        ],
+        "rotation": 0,
+        "scale": 0.1
+      },
+      "components": [
+        {
+          "type": "Enemy",
+          "accel": 50,
+          "angularVel": 90,
+          "firetimer": -1,
+          "maxfire": -1,
+          "m_score": 250
+        },
+        {
+          "type": "SpriteRenderer",
+          "textureName": "projectile06-2.png"
+        },
+        {
+          "type": "RigidBody",
+          "damping": 1.5,
+          "velocity": [
+            0,
+            0
+          ]
+        },
+        {
+          "type": "CircleCollider2d",
+          "radius": 10
+        }
+      ]
+    },
+    {
+      "name": "Rocketp",
+      "tag": "rocketp",
+      "lifespan": 2.0,
+      "transform": {
+        "position": [
+          400,
+          300
+        ],
+        "rotation": 0,
+        "scale": 0.1
+      },
+      "components": [
+        {
+          "type": "Rocket",
+          "accel": 100
+        },
+        {
+          "type": "SpriteRenderer",
+          "textureName": "missile-1.png"
+        },
+        {
+          "type": "RigidBody",
+          "damping": 100,
+          "velocity": [
+            0,
+            0
+          ]
+        },
+        {
+          "type": "CircleCollider2d",
+          "radius": 3
+        }
+      ]
+    },
+    {
+      "name": "Rockete",
+      "tag": "rockete",
+      "lifespan": 0.5,
+      "transform": {
+        "position": [
+          400,
+          300
+        ],
+        "rotation": 0,
+        "scale": 0.1
+      },
+      "components": [
+        {
+          "type": "Rocket",
+          "accel": 100
+        },
+        {
+          "type": "SpriteRenderer",
+          "textureName": "missile-1.png"
+        },
+        {
+          "type": "RigidBody",
+          "damping": 100,
+          "velocity": [
+            0,
+            0
+          ]
+        },
+        {
+          "type": "CircleCollider2d",
+          "radius": 3
         }
       ]
     }

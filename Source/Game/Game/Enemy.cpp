@@ -14,13 +14,19 @@ void Enemy::Start()
 
 void Enemy::Update(float deltaTime)
 {
-	/*
+	
 	bool playerFound = false;
 
-	Player* player = owner->scene->GetActorByName<Player>("Player");
+
+	auto actor = owner->scene->GetActorByName<viper::Actor>("Player");
+	Player* player = nullptr;
+	if (actor) {
+		player = actor->GetComponent<Player>();
+	}
+
 	if (player) {
 		viper::vec2 direction{ 0, 0 };
-		direction = player->transform.position - owner->transform.position;
+		direction = player->owner->transform.position - owner->transform.position;
 
 		viper::vec2 forward = { viper::vec2{1, 0}.Rotate(viper::DegToRad(owner->transform.rotation)) };
 		direction = direction.Normalized();
@@ -34,7 +40,6 @@ void Enemy::Update(float deltaTime)
 	}
 
 	viper::vec2 force = viper::vec2{1,0}.Rotate(viper::DegToRad(owner->transform.rotation)) * accel;
-	//velocity += force * deltaTime;
 	auto rigidBody = owner->GetComponent<viper::RigidBody>();
 	if (rigidBody) {
 		rigidBody->velocity += force * deltaTime;
@@ -44,41 +49,22 @@ void Enemy::Update(float deltaTime)
 	owner->transform.position.y = viper::Wrap(owner->transform.position.y, 0.0f, (float)viper::GetEngine().GetRenderer().GetHeight());
 
 	firetimer -= deltaTime;
-	if (firetimer <= 0.0f && playerFound) {
-		viper::Transform transform;
-		transform.position = owner->transform.position;
-		transform.rotation = owner->transform.rotation;
-		transform.scale = 0.3f;
-		auto rocket = std::make_unique<Actor>(transform);// , viper::Resources().Get<viper::Texture>("missile-1.png", viper::GetEngine().GetRenderer()));
-		rocket->accel = 600.0f;
-		rocket->name = "rockete";
-		rocket->tag = "rockete";
-		rocket->lifespan = 0.5f;
-
-		auto spriteRenderer = std::make_unique<viper::SpriteRenderer>();
-		spriteRenderer->textureName = "missile-1.png";
-		rocket->AddComponent(std::move(spriteRenderer));
-
-		auto rigidBody = std::make_unique<viper::RigidBody>();
-		rigidBody->damping = 0.0f;
-		rocket->AddComponent(std::move(rigidBody));
-
-		auto collider = std::make_unique<viper::CircleCollider2d>();
-		collider->radius = 10.0f;
-		rocket->AddComponent(std::move(collider));
-
-		scene->AddActor(std::move(rocket));
+	if (firetimer <= 0.0f && playerFound && maxfire > 0) {
+		viper::Transform transform{ owner->transform.position, owner->transform.rotation, 0.5f };
+		auto rock = viper::Instantiate("Rockete", transform);
+		rock->tag = "rockete";
+		owner->scene->AddActor(std::move(rock), true);
 		firetimer = maxfire;
+
 	}
 
 
-	Actor::Update(deltaTime);
-	*/
+	
 }
 
 void Enemy::onCollision(viper::Actor* other)
 {
-	if (other->tag != owner->tag && other->tag != "rockete" && name != "immortal snail")
+	if (other->tag != owner->tag && other->tag != "rockete" && owner->name != "IEnemy")
 	{
 		owner->destroyed = true;
 		owner->scene->GetGame()->AddPoints(m_points);
@@ -94,7 +80,3 @@ void Enemy::onCollision(viper::Actor* other)
 	}
 }
 
-void Enemy::Update(float deltaTime)
-{
-
-}

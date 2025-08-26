@@ -6,43 +6,42 @@ FACTORY_REGISTER(Rocket)
 
 void Rocket::Update(float deltaTime)
 {
-	/*
-	viper::vec2 force = viper::vec2{ 1,0 }.Rotate(viper::DegToRad(transform.rotation)) * accel;
-	auto rigidBody = GetComponent<viper::RigidBody>();
-	if (rigidBody) {
-		rigidBody->velocity = force;
-	}
+	
+	viper::vec2 force = viper::vec2{ 1,0 }.Rotate(viper::DegToRad(owner->transform.rotation)) * accel;
 
-	transform.position.x = viper::Wrap(transform.position.x, 0.0f, (float) viper::GetEngine().GetRenderer().GetWidth());
-	transform.position.y = viper::Wrap(transform.position.y, 0.0f, (float) viper::GetEngine().GetRenderer().GetHeight());
+	owner->transform.position.x = viper::Wrap(owner->transform.position.x, 0.0f, (float) viper::GetEngine().GetRenderer().GetWidth());
+	owner->transform.position.y = viper::Wrap(owner->transform.position.y, 0.0f, (float) viper::GetEngine().GetRenderer().GetHeight());
 
 	viper::Particle particle;
-	particle.position = transform.position;
-	particle.velocity = viper::vec2{ -(rigidBody->velocity.x) + viper::random::getReal() * 50 - 25, -(rigidBody->velocity.y) + viper::random::getReal() * 50 - 25 };
+	particle.position = owner->transform.position;
+	// Thrust particle effect the opposite direction of the rocket's movement
+	particle.velocity = viper::vec2{ -(force.x) + viper::random::getReal() * 50 - 25, -(force.y) + viper::random::getReal() * 50 - 25 };
+	
 	particle.color = viper::vec3{ 1.0f, 1.0f, 1.0f };
 	particle.lifetime = .1f * viper::random::getReal();
 	viper::GetEngine().GetParticleSystem().AddParticle(particle);
 
+	auto rigidBody = owner->GetComponent<viper::RigidBody>();
 
-
-	Actor::Update(deltaTime);
-
-	if (lifespan < 0.0f && tag == "rocket") {
-		scene->GetGame()->resetMultiplier();
+	if (rigidBody) {
+		rigidBody->velocity += force * deltaTime * accel;
 	}
-	*/
+
+
+
+
+	if ((owner->lifespan < 0.1f) && (owner->tag == "rocketp")) {
+		owner->scene->GetGame()->resetMultiplier();
+	}
+	
 }
 
 void Rocket::onCollision(viper::Actor* other)
 {
-	if ((other->tag == "enemy" && owner->tag == "rocket") || (other->tag == "player" && owner->tag == "rockete")) {
+	if ((other->tag == "enemy" && owner->name == "Rocketp") || (other->tag == "player" && owner->name == "Rockete")) {
 		owner->destroyed = true;
-		if (owner->tag == "rocket") {
+		if (owner->tag == "rocketp") {
 			owner->scene->GetGame()->increaseMultiplier(0.10f);
 		}
 	}
-}
-
-void Rocket::Update(float deltaTime)
-{
 }

@@ -18,7 +18,7 @@ public:
 	float invincibilityTimer = 0.0f;
 
 	// Inherited via Actor
-	void onCollision(viper::ICollidable* other) override;
+	void onCollision(viper::Actor* other) override;
 
 	// Inherited via Component
 	void Update(float deltaTime) override;
