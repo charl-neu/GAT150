@@ -77,7 +77,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Source\ThirdParty\rapidjson\include;$(SolutionDir)Source\ThirdParty\SDL3\include;$(SolutionDir)Source\ThirdParty\Fmod\core\inc;$(SolutionDir)Source\Engine</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Source\ThirdParty\box2d\include;$(SolutionDir)Source\ThirdParty\rapidjson\include;$(SolutionDir)Source\ThirdParty\SDL3\include;$(SolutionDir)Source\ThirdParty\Fmod\core\inc;$(SolutionDir)Source\Engine</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>EnginePCH.h</PrecompiledHeaderFile>
       <ForcedIncludeFiles>EnginePCH.h</ForcedIncludeFiles>
@@ -103,7 +103,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Source\ThirdParty\rapidjson\include;$(SolutionDir)Source\ThirdParty\SDL3\include;$(SolutionDir)Source\ThirdParty\Fmod\core\inc;$(SolutionDir)Source\Engine</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Source\ThirdParty\box2d\include;$(SolutionDir)Source\ThirdParty\rapidjson\include;$(SolutionDir)Source\ThirdParty\SDL3\include;$(SolutionDir)Source\ThirdParty\Fmod\core\inc;$(SolutionDir)Source\Engine</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>EnginePCH.h</PrecompiledHeaderFile>
       <ForcedIncludeFiles>EnginePCH.h</ForcedIncludeFiles>
@@ -127,7 +127,7 @@
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Source\ThirdParty\rapidjson\include;$(SolutionDir)Source\ThirdParty\SDL3\include;$(SolutionDir)Source\ThirdParty\Fmod\core\inc;$(SolutionDir)Source\Engine</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Source\ThirdParty\box2d\include;$(SolutionDir)Source\ThirdParty\rapidjson\include;$(SolutionDir)Source\ThirdParty\SDL3\include;$(SolutionDir)Source\ThirdParty\Fmod\core\inc;$(SolutionDir)Source\Engine</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>EnginePCH.h</PrecompiledHeaderFile>
       <ForcedIncludeFiles>EnginePCH.h</ForcedIncludeFiles>
@@ -153,7 +153,7 @@
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Source\ThirdParty\rapidjson\include;$(SolutionDir)Source\ThirdParty\SDL3\include;$(SolutionDir)Source\ThirdParty\Fmod\core\inc;$(SolutionDir)Source\Engine</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Source\ThirdParty\box2d\include;$(SolutionDir)Source\ThirdParty\rapidjson\include;$(SolutionDir)Source\ThirdParty\SDL3\include;$(SolutionDir)Source\ThirdParty\Fmod\core\inc;$(SolutionDir)Source\Engine</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>EnginePCH.h</PrecompiledHeaderFile>
       <ForcedIncludeFiles>EnginePCH.h</ForcedIncludeFiles>
@@ -195,6 +195,7 @@
     <ClCompile Include="Game\Scene.cpp" />
     <ClCompile Include="Input\Input System.cpp" />
     <ClCompile Include="Math\Transform.cpp" />
+    <ClCompile Include="Physics\Physics.cpp" />
     <ClCompile Include="Renderer\Particle System.cpp" />
     <ClCompile Include="Renderer\Font.cpp" />
     <ClCompile Include="Renderer\Mesh.cpp" />
@@ -227,7 +228,6 @@
     <ClInclude Include="Event\Event Manager.h" />
     <ClInclude Include="Event\Event.h" />
     <ClInclude Include="Event\Observer.h" />
-    <ClInclude Include="Event\Physics.h" />
     <ClInclude Include="Game\Actor.h" />
     <ClInclude Include="Game\Component.h" />
     <ClInclude Include="Game\Game.h" />
@@ -239,6 +239,8 @@
     <ClInclude Include="Math\Vector2.h" />
     <ClInclude Include="Math\Vector3.h" />
     <ClInclude Include="Physics\Collidable.h" />
+    <ClInclude Include="Physics\Physics.h" />
+    <ClInclude Include="Physics\PhysicsBody.h" />
     <ClInclude Include="Renderer\Font.h" />
     <ClInclude Include="Renderer\Mesh.h" />
     <ClInclude Include="Renderer\Particle System.h" />
