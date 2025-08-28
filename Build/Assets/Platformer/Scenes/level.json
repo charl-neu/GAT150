@@ -13,7 +13,7 @@
       "components": [
         {
           "type": "SpriteRenderer",
-          "texture_name": "textures/tree01.png"
+          "textureName": "textures/tree01.png"
         }
       ]
     },
@@ -31,7 +31,7 @@
       "components": [
         {
           "type": "SpriteRenderer",
-          "texture_name": "textures/platform.png"
+          "textureName": "textures/platform.png"
         },
         {
           "type": "RigidBody",
@@ -54,7 +54,7 @@
       "components": [
         {
           "type": "SpriteRenderer",
-          "texture_name": "textures/crate01.png"
+          "textureName": "textures/crate02.png"
         },
         {
           "type": "RigidBody",

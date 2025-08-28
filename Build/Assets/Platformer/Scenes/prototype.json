@@ -1,12 +1,12 @@
 {
   "prototypes": [
     {
-      "name": "Player",
+      "name": "pPlayer",
       "tag": "player",
       "transform": {
         "position": [
-          400,
-          300
+          300,
+          600
         ],
         "rotation": 0,
         "scale": 1
@@ -14,18 +14,18 @@
       "components": [
         {
           "type": "PlayerController",
-          "accel": 350,
-          "maxspeed": 5,
+          "accel": 150,
+          "maxspeed": 3,
           "jump":  10,
           "health": 3
         },
         {
           "type": "SpriteRenderer",
-          "textureName": "green_06.png"
+          "textureName": "textures/box.png"
         },
         {
           "type": "RigidBody",
-          "gravityScale": 0,
+          "gravityScale": 1,
           "angularDamping": 2.0,
           "constrainAngle":  true,
           "shape": "capsule"
@@ -41,11 +41,11 @@
       "tag": "enemy",
       "transform": {
         "position": [
-          400,
-          300
+          800,
+          700
         ],
         "rotation": 0,
-        "scale": 0.10
+        "scale": 1.0
       },
       "components": [
         {
@@ -58,7 +58,7 @@
         },
         {
           "type": "SpriteRenderer",
-          "textureName": "enemy.png"
+          "textureName": "textures/enemy.png"
         },
         {
           "type": "RigidBody",

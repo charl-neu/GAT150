@@ -23,10 +23,10 @@ void PlayerController::Update(float deltaTime)
 	}
 
 	if (dir != 0) {
-		m_rigidBody->applyForce(viper::vec2{ 1,0 } * dir * accel);
+		m_rigidBody->applyForce(viper::vec2{ 1,0 } * dir * accel * 10);
 	}
 
 	if (viper::GetEngine().GetInputSystem().GetKeyPressed(SDL_SCANCODE_SPACE)) {
-		m_rigidBody->applyForce(viper::vec2{ 0,-1 } * jump);
+		m_rigidBody->applyForce(viper::vec2{ 0,-1 } * jump * 10000);
 	}
 }

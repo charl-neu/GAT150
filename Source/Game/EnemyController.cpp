@@ -15,14 +15,14 @@ void EnemyController::Update(float deltaTime)
 {
 	float dir = 0;
 	
-	auto actor = owner->scene->GetActorByName<viper::Actor>("Player");
+	auto actor = owner->scene->GetActorByName<viper::Actor>("pPlayer");
 	if (actor) {
 		if (actor->transform.position.x < owner->transform.position.x) dir = -1;
 		else dir = 1;
 	}
 
 	if (dir != 0) {
-		m_rigidBody->applyForce(viper::vec2{ 1,0 } *dir * accel);
+		m_rigidBody->applyForce(viper::vec2{ 1,0 } * dir * accel * 10);
 	}
 
 }

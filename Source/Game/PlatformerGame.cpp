@@ -24,6 +24,7 @@ void PlatformerGame::Update(float dt) {
 		break;
 	case PlatformerGame::GameState::StartRound:
 		SpawnPlayer();
+		SpawnEnemy();
 		m_gameState = GameState::Game;
 		break;
 	case PlatformerGame::GameState::Game:
@@ -45,7 +46,7 @@ void PlatformerGame::OnPlayerDeath() {
 
 }
 void PlatformerGame::SpawnPlayer() {
-	auto player = viper::Instantiate("player");
+	auto player = viper::Instantiate("pplayer");
 	m_scene->AddActor(std::move(player), true);
 }
 void PlatformerGame::OnNotify(const viper::Event& event) {
@@ -53,6 +54,6 @@ void PlatformerGame::OnNotify(const viper::Event& event) {
 }
 
 void PlatformerGame::SpawnEnemy() {
-	auto enemy = viper::Instantiate("PEnemy");
+	auto enemy = viper::Instantiate("pEnemy");
 	m_scene->AddActor(std::move(enemy), true);
 }
