@@ -1,6 +1,7 @@
 #include "Game/Actor.h"
 #include "game/GamePlayer.h"
 #include "game/GameGame.h"
+#include "PlatformerGame.h"
 
 #define RENDERER viper::GetEngine().GetRenderer()
 #define AUDIO viper::GetEngine().GetAudioSystem()
@@ -16,7 +17,7 @@ int main(int argc, char* argv[]) {
 
 
     //set the file path
-    viper::file::SetCurrentDirectory("Assets");
+    viper::file::SetCurrentDirectory("Assets/Platformer");
     
 	auto spriteRenderer = viper::Factory::Instance().Create<viper::SpriteRenderer>("SpriteRenderer");
 	auto meshRenderer = viper::Factory::Instance().Create<viper::MeshRenderer>("MeshRenderer");
@@ -25,7 +26,7 @@ int main(int argc, char* argv[]) {
     //init engine
 	viper::GetEngine().Initialize();
 
-	std::unique_ptr<SpaceGame> game = std::make_unique<SpaceGame>();
+	std::unique_ptr<viper::Game> game = std::make_unique<PlatformerGame>();
 	game->Initialize();
 
 

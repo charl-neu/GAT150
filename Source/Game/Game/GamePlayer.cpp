@@ -7,15 +7,16 @@
 
 FACTORY_REGISTER(Player)
 
+void Player::Start() {
+	m_rigidBody = owner->GetComponent<viper::RigidBody>();
+}
+
 void Player::Update(float deltaTime)
 {
-	
-	auto rigidBody = owner->GetComponent<viper::RigidBody>();
-
-	if (rigidBody->velocity.Length()) {
+	if (m_rigidBody->velocity.Length()) {
 		viper::Particle particle;
 		particle.position = owner->transform.position;
-		particle.velocity = viper::vec2{ -(rigidBody->velocity.x) + viper::random::getReal() * 100 - 50, -(rigidBody->velocity.y) + viper::random::getReal() * 100 - 50 };
+		particle.velocity = viper::vec2{ -(m_rigidBody->velocity.x) + viper::random::getReal() * 100 - 50, -(m_rigidBody->velocity.y) + viper::random::getReal() * 100 - 50 };
 		particle.color = viper::vec3{ 1.0f, 1.0f, 1.0f };
 		particle.lifetime = .25f * (viper::random::getReal() * 2);
 		viper::GetEngine().GetParticleSystem().AddParticle(particle);
@@ -35,7 +36,7 @@ void Player::Update(float deltaTime)
 
 	owner->transform.rotation += rotate * deltaTime * angularVel;
 
-
+	m_rigidBody->applyTorque(rotate);
 
 	float thrust = 0;
 	if (viper::GetEngine().GetInputSystem().GetKeyDown(SDL_SCANCODE_W)) {
@@ -47,9 +48,9 @@ void Player::Update(float deltaTime)
 
 
 	viper::vec2 direction{ 1, 0 };
-	viper::vec2 force = direction.Rotate(viper::DegToRad(owner->transform.rotation)) * accel;
-	if (rigidBody) {
-		rigidBody->velocity += force * thrust * deltaTime;
+	viper::vec2 force = direction.Rotate(viper::DegToRad(owner->transform.rotation)) * accel * thrust;
+	if (m_rigidBody) {
+		m_rigidBody->applyForce(force);
 	}
 	owner->transform.position.x = viper::Wrap(owner->transform.position.x, 0.0f, 1280.0f);
 	owner->transform.position.y = viper::Wrap(owner->transform.position.y, 0.0f, 1024.0f);

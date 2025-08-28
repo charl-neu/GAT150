@@ -13,7 +13,7 @@
 bool SpaceGame::Initialize()
 {
 	OBSERVER_ADD(Player_dead);
-		OBSERVER_ADD(add_pts);
+	OBSERVER_ADD(add_pts);
 
 	m_scene = std::make_unique<viper::Scene>(this);
 	m_scene->Load("Scene.json");

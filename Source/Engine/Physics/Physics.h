@@ -23,6 +23,8 @@ namespace viper {
 		static float ms_pixelsperUnit;
 
 	private:
+		friend class PhysicsBody;
 		b2WorldId m_worldId;
+
 	};
 }

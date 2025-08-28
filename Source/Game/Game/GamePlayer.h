@@ -8,6 +8,8 @@ public:
 	float accel = 200;
 	float angularVel = 90.0f;
 	int health = 3;
+
+	viper::RigidBody* m_rigidBody;
 public:
 	Player() = default;
 	CLASS_PROTOTYPE(Player)
@@ -17,8 +19,12 @@ public:
 	float firetimer = 0.0f;
 	float invincibilityTimer = 0.0f;
 
+	
+
 	// Inherited via Actor
 	void onCollision(viper::Actor* other) override;
+
+	void Start() override;
 
 	// Inherited via Component
 	void Update(float deltaTime) override;

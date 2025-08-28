@@ -15,7 +15,7 @@
         {
           "type": "Player",
           "accel": 350,
-          "angularVel": 150,
+          "angularVel": 5,
           "health": 3,
           "firetimer": 0,
           "invincibilityTimer": 0
@@ -26,11 +26,8 @@
         },
         {
           "type": "RigidBody",
-          "damping": 0.75,
-          "velocity": [
-            0,
-            0
-          ]
+          "gravityScale": 0,
+          "angularDamping":  2.0
         },
         {
           "type": "CircleCollider2d",
@@ -90,7 +87,7 @@
       "components": [
         {
           "type": "Enemy",
-          "accel": 500,
+          "accel": 100,
           "angularVel": 90,
           "firetimer": -1,
           "maxfire": -1,
@@ -102,11 +99,7 @@
         },
         {
           "type": "RigidBody",
-          "damping": 1.5,
-          "velocity": [
-            0,
-            0
-          ]
+          "gravityScale": 0
         },
         {
           "type": "CircleCollider2d",
@@ -248,11 +241,7 @@
         },
         {
           "type": "RigidBody",
-          "damping": 100,
-          "velocity": [
-            0,
-            0
-          ]
+          "gravityScale": 0
         },
         {
           "type": "CircleCollider2d",

@@ -196,6 +196,7 @@
     <ClCompile Include="Input\Input System.cpp" />
     <ClCompile Include="Math\Transform.cpp" />
     <ClCompile Include="Physics\Physics.cpp" />
+    <ClCompile Include="Physics\PhysicsBody.cpp" />
     <ClCompile Include="Renderer\Particle System.cpp" />
     <ClCompile Include="Renderer\Font.cpp" />
     <ClCompile Include="Renderer\Mesh.cpp" />

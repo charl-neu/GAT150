@@ -8,6 +8,11 @@ void Rocket::Update(float deltaTime)
 {
 	
 	viper::vec2 force = viper::vec2{ 1,0 }.Rotate(viper::DegToRad(owner->transform.rotation)) * accel;
+	auto rigidBody = owner->GetComponent<viper::RigidBody>();
+
+	if (rigidBody) {
+		rigidBody->setVelocity(force);
+	}
 
 	owner->transform.position.x = viper::Wrap(owner->transform.position.x, 0.0f, (float) viper::GetEngine().GetRenderer().GetWidth());
 	owner->transform.position.y = viper::Wrap(owner->transform.position.y, 0.0f, (float) viper::GetEngine().GetRenderer().GetHeight());
@@ -21,11 +26,7 @@ void Rocket::Update(float deltaTime)
 	particle.lifetime = .1f * viper::random::getReal();
 	viper::GetEngine().GetParticleSystem().AddParticle(particle);
 
-	auto rigidBody = owner->GetComponent<viper::RigidBody>();
-
-	if (rigidBody) {
-		rigidBody->velocity += force * deltaTime * accel;
-	}
+	
 
 
 

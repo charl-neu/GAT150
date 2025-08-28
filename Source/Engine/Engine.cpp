@@ -4,6 +4,7 @@
 #include "Input/Input System.h"
 #include "Renderer/Particle System.h"
 #include "Event/Event Manager.h"
+#include "Core/Factory.h"
 
 namespace viper
 {
@@ -33,8 +34,8 @@ namespace viper
 	void Engine::Shutdown() 
 	{
 		Resources().Clear();
-
 		EventManager::Instance().RemoveAll();
+		Factory::Instance().removeAll();
 
 		if (m_particleSystem) {
 			m_particleSystem->Shutdown();

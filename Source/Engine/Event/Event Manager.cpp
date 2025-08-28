@@ -38,6 +38,6 @@ namespace viper
 	}
 	void EventManager::RemoveAll()
 	{
-
+		m_observers.clear();
 	}
 }

@@ -1,0 +1,80 @@
+{
+  "prototypes": [
+    {
+      "name": "Player",
+      "tag": "player",
+      "transform": {
+        "position": [
+          400,
+          300
+        ],
+        "rotation": 0,
+        "scale": 1
+      },
+      "components": [
+        {
+          "type": "PlayerController",
+          "accel": 350,
+          "maxspeed": 5,
+          "jump":  10,
+          "health": 3
+        },
+        {
+          "type": "SpriteRenderer",
+          "textureName": "green_06.png"
+        },
+        {
+          "type": "RigidBody",
+          "gravityScale": 0,
+          "angularDamping": 2.0,
+          "constrainAngle":  true,
+          "shape": "capsule"
+        },
+        {
+          "type": "CircleCollider2d",
+          "radius": 25
+        }
+      ]
+    },
+    {
+      "name": "PEnemy",
+      "tag": "enemy",
+      "transform": {
+        "position": [
+          400,
+          300
+        ],
+        "rotation": 0,
+        "scale": 0.10
+      },
+      "components": [
+        {
+          "type": "EnemyController",
+          "accel": 150,
+          "angularVel": 90,
+          "firetimer": 3.0,
+          "maxfire": 2.0,
+          "m_score": 100
+        },
+        {
+          "type": "SpriteRenderer",
+          "textureName": "enemy.png"
+        },
+        {
+          "type": "RigidBody",
+          "damping": 0.5,
+          "velocity": [
+            0,
+            0
+          ]
+        },
+        {
+          "type": "CircleCollider2d",
+          "radius": 30
+        }
+      ]
+    }
+
+
+  ]
+}

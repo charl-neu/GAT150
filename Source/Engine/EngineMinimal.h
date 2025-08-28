@@ -18,6 +18,8 @@
 
 //physics
 #include "Physics/Collidable.h"
+#include "Physics/Physics.h"
+#include "Physics/PhysicsBody.h"
 
 //math
 #include "Math/Math.h"

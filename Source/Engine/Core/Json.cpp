@@ -93,8 +93,8 @@ namespace viper::json
         if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray() || value[name.c_str()].Size() != 2) {
             if (required) {
                 Logger::Error("Could not read Json value (vec2): {}.", name);
-                return false;
             }
+            return false;
         }
         // get the data
         data.x = value[name.c_str()][0].GetFloat();
