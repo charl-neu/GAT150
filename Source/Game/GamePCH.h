@@ -4,6 +4,7 @@
 #include "Engine.h"
 
 //components
+#include "Components/Animator.h"
 #include "Components/SpriteRenderer.h"
 #include "Components/MeshRenderer.h"
 #include "Components/RigidBody.h"

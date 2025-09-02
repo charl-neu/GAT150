@@ -8,6 +8,7 @@ namespace viper {
 	public:
 		std::string textureName;
 		res_t<Texture> texture;
+		rect textureRect;
 
 		CLASS_PROTOTYPE(SpriteRenderer)
 

@@ -179,6 +179,7 @@
     </ClCompile>
     <ClCompile Include="Audio\Audio System.cpp" />
     <ClCompile Include="Audio\AudioClip.cpp" />
+    <ClCompile Include="Components\Animator.cpp" />
     <ClCompile Include="Components\AudioSource.cpp" />
     <ClCompile Include="Components\CircleCollider2d.cpp" />
     <ClCompile Include="Components\MeshRenderer.cpp" />
@@ -203,11 +204,13 @@
     <ClCompile Include="Renderer\Renderer.cpp" />
     <ClCompile Include="Renderer\Text.cpp" />
     <ClCompile Include="Renderer\Texture.cpp" />
+    <ClCompile Include="Renderer\TextureAnimation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\EnginePCH.h" />
     <ClInclude Include="Audio\Audio System.h" />
     <ClInclude Include="Audio\AudioClip.h" />
+    <ClInclude Include="Components\Animator.h" />
     <ClInclude Include="Components\AudioSource.h" />
     <ClInclude Include="Components\CircleCollider2d.h" />
     <ClInclude Include="Components\ColliderComponent.h" />
@@ -236,6 +239,7 @@
     <ClInclude Include="Game\Scene.h" />
     <ClInclude Include="Input\Input System.h" />
     <ClInclude Include="Math\Math.h" />
+    <ClInclude Include="Math\Rect.h" />
     <ClInclude Include="Math\Transform.h" />
     <ClInclude Include="Math\Vector2.h" />
     <ClInclude Include="Math\Vector3.h" />
@@ -248,6 +252,7 @@
     <ClInclude Include="Renderer\Renderer.h" />
     <ClInclude Include="Renderer\Text.h" />
     <ClInclude Include="Renderer\Texture.h" />
+    <ClInclude Include="Renderer\TextureAnimation.h" />
     <ClInclude Include="Resources\Resource.h" />
     <ClInclude Include="Resources\ResourceManager.h" />
   </ItemGroup>

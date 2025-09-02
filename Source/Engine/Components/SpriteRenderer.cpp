@@ -9,7 +9,9 @@ namespace viper
 
 	void SpriteRenderer::Start()
 	{
+		if (!texture && !textureName.empty()) {
 		texture = Resources().Get<Texture>(textureName, GetEngine().GetRenderer());
+		}
 	}
 
 	void SpriteRenderer::Update(float deltaTime)
@@ -17,15 +19,23 @@ namespace viper
 
 	}
 
-	void SpriteRenderer::Draw(Renderer& renderer)
-	{ 
-		auto texture = Resources().Get<Texture>(textureName, renderer).get();
+	void SpriteRenderer::Draw(Renderer& renderer) {
 		if (texture) {
-			renderer.DrawTextureRotated(*texture,
-				owner->transform.position.x,
-				owner->transform.position.y,
-				owner->transform.scale,
-				owner->transform.rotation);
+			if (textureRect.w > 0 && textureRect.h > 0) {
+				renderer.DrawTexture(*texture,
+					textureRect,
+					owner->transform.position.x,
+					owner->transform.position.y,
+					owner->transform.rotation,
+					owner->transform.scale);
+			}
+			else {
+				renderer.DrawTextureRotated(*texture,
+					owner->transform.position.x,
+					owner->transform.position.y,
+					owner->transform.rotation,
+					owner->transform.scale);
+			}
 		}
 	}
 

@@ -26,6 +26,7 @@
 #include "Math/Vector2.h"
 #include "Math/Vector3.h"
 #include "Math/Transform.h"
+#include "Math/Rect.h"
 
 //components
 #include "Game/Component.h"
@@ -39,6 +40,11 @@
 #include "Event/Observer.h"
 #include "Event/Event Manager.h"
 
+//renderer
+#include "Renderer/Text.h"
+#include "Renderer/Texture.h"
+#include "Renderer/TextureAnimation.h"
+
 //resources
 #include "Resources/Resource.h"
 #include "Resources/ResourceManager.h"
@@ -49,6 +55,7 @@
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
 #include <SDL3/SDL_ttf.h>
+
 
 //standard library
 #include <iostream>
