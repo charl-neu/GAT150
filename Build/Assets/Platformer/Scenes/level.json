@@ -18,6 +18,23 @@
       ]
     },
     {
+      "persistent": true,
+      "transform": {
+        "position": [
+          0,
+          0
+        ],
+        "rotation": 0,
+        "scale": 4
+      },
+      "components": [
+        {
+          "type": "TilemapRenderer",
+          "tilemap_name": "Tilemaps/tilemap.json"
+        }
+      ]
+    },
+    {
       "tag": "ground",
       "persistent": true,
       "transform": {

@@ -117,6 +117,33 @@ namespace viper::json
         return true;
 	   }
 
+       bool Read(const value_t& value, const std::string& name, std::vector<int>& data, bool required)
+       {
+           // check if the value has the "<name>" and the correct data type
+           if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray()) {
+               if (required) {
+                   Logger::Error("Could not read Json value (vec3): {}.", name);
+               }
+               return false;
+           }
+           // get the data
+           for (rapidjson::SizeType i = 0; i < value[name.c_str()].Size(); i++) // Uses SizeType instead of size_t
+           {
+               if (value[name.c_str()][i].IsInt())
+               {
+                   data.push_back(value[name.c_str()][i].GetInt());
+               }
+               else
+               {
+                   if (required) {
+                       Logger::Error("Could not read Json value (int in array): {}.", name);
+                   }
+                   return false;
+               }
+		   }
+           return true;
+       }
+
 
 }
 

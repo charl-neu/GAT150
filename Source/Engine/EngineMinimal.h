@@ -29,6 +29,7 @@
 #include "Math/Rect.h"
 
 //components
+#include "Components/Animator.h"
 #include "Game/Component.h"
 #include "Components/RendererComponent.h"
 #include "Components/SpriteRenderer.h"
