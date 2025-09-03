@@ -104,7 +104,7 @@ namespace viper {
         SDL_RenderTextureRotated(m_renderer, texture.m_texture, &srcRect, &destRect, angle, NULL, SDL_FLIP_NONE);
     }
 
-    void Renderer::DrawTextureRotated(Texture& texture, float x, float y, float scale, float angle)
+    void Renderer::DrawTextureRotated(Texture& texture, float x, float y, float angle, float scale)
     {
         vec2 size = texture.GetSize();
 
