@@ -24,6 +24,7 @@ namespace viper {
 		PhysicsBody::PhysicsBodyDef bodyDef;
 		bodyDef.isDynamic = false;
 		bodyDef.actor = owner;
+		bodyDef.restitution = 0;
 
 		// iterate through layers
 		for (auto layer : m_tilemap->GetLayers()) {
@@ -41,8 +42,8 @@ namespace viper {
 				transform.position = position;
 				vec2 size = vec2{ source.w, source.h };
 
-				//auto physicsBody = std::make_unique<PhysicsBody>(transform, size, bodyDef, GetEngine().GetPhysics());
-				//m_physicsBodies.push_back(std::move(physicsBody));
+				auto physicsBody = std::make_unique<PhysicsBody>(transform, size, bodyDef, GetEngine().GetPhysics());
+				m_physicsBodies.push_back(std::move(physicsBody));
 			}
 		}
 	}

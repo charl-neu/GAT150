@@ -4,6 +4,9 @@ FACTORY_REGISTER(EnemyController)
 
 void EnemyController::onCollision(viper::Actor* other)
 {
+	if (other->tag == "player") {
+		owner->destroyed = true;
+	}
 }
 
 void EnemyController::Start()

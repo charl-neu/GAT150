@@ -5,6 +5,14 @@ FACTORY_REGISTER(PlayerController)
 void PlayerController::onCollision(viper::Actor* other)
 {
 	std::cout << "Collided with " << other->name << std::endl;
+	if (other->tag == "enemy" && invincibilityTimer < 0.0f) {
+		health--;
+		invincibilityTimer = 2.0f;
+		if (health <= 0) {
+			owner->destroyed = true; \
+			viper::EventManager::Instance().Notify(viper::Event{ "Player_dead", true });
+		}
+	}
 }
 
 void PlayerController::Start()
@@ -14,6 +22,7 @@ void PlayerController::Start()
 
 void PlayerController::Update(float deltaTime)
 {
+
 	float dir = 0;
 	if (viper::GetEngine().GetInputSystem().GetKeyDown(SDL_SCANCODE_A)) {
 		dir = -1;
@@ -24,11 +33,13 @@ void PlayerController::Update(float deltaTime)
 	}
 
 	if (dir != 0) {
-		m_rigidBody->applyForce(viper::vec2{ 1,0 } * dir * accel * 10);
+		m_rigidBody->applyForce(viper::vec2{ 1,0 } *dir * accel * 10);
 	}
 
-	if (viper::GetEngine().GetInputSystem().GetKeyPressed(SDL_SCANCODE_SPACE)) {
-		m_rigidBody->applyForce(viper::vec2{ 0,-1 } * jump * 10000);
+	if (fabs(m_rigidBody->velocity.x) > maxspeed) m_rigidBody->setVelocity({ maxspeed, m_rigidBody->velocity.y });
+
+  	if (viper::GetEngine().GetInputSystem().GetKeyPressed(SDL_SCANCODE_SPACE)) {
+		m_rigidBody->setVelocity(viper::vec2{ m_rigidBody->velocity.x, -1 * jump * 100 });
 	}
 
 	auto spriteRenderer = owner->GetComponent<viper::SpriteRenderer>();
@@ -37,4 +48,5 @@ void PlayerController::Update(float deltaTime)
 			spriteRenderer->fliph = (m_rigidBody->velocity.x < 0);
 		}
 	}
+	invincibilityTimer -= deltaTime;
 }

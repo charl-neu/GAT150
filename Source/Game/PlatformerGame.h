@@ -30,6 +30,8 @@ public:
 
 	void OnPlayerDeath();
 	float scoremultiplier = 1.0f;
+	float difficulty = 1.0f;
+	float getDifficulty() { return difficulty; }
 
 private:
 	void SpawnEnemy();

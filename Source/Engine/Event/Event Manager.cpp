@@ -8,7 +8,7 @@ namespace viper
 {
 	void EventManager::AddObserver(const Event::id_t& eventId, IObserver& observer)
 	{
-		m_observers[eventId].push_back(&observer);
+		m_observers[toLower(eventId)].push_back(&observer);
 	}
 	void EventManager::RemoveObserver(IObserver& observer)
 	{

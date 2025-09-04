@@ -123,7 +123,7 @@ namespace viper {
 
 	void Scene::RemoveAllActors(bool force) {
 		for (auto iterator = m_actors.begin(); iterator != m_actors.end();) {
-			if (((*iterator)->persistent) && (force = false)) {
+			if (((*iterator)->persistent) && (force == false)) {
 				++iterator; 
 			}
 			else {

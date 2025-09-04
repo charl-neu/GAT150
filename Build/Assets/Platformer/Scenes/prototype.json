@@ -9,14 +9,14 @@
           200
         ],
         "rotation": 0,
-        "scale": 1
+        "scale": 0.5
       },
       "components": [
         {
           "type": "PlayerController",
-          "accel": 100,
-          "maxspeed": 3,
-          "jump":  10,
+          "accel": 700,
+          "maxspeed": 25,
+          "jump": 3.5,
           "health": 3
         },
         {
@@ -25,10 +25,10 @@
         },
         {
           "type": "RigidBody",
-          "gravityScale": 1,
+          "gravityScale": 1.5,
           "angularDamping": 2.0,
+          "restitution": 0.0,
           "constrainAngle": true,
-          "isSensor": true,
           "shape": "capsule"
         },
         {
@@ -37,42 +37,47 @@
         }
       ]
     },
+
     {
-      "name": "PEnemy",
+      "name": "bat",
       "tag": "enemy",
       "transform": {
         "position": [
-          800,
-          700
+          740,
+          500
         ],
         "rotation": 0,
-        "scale": 1.0
+        "accel":  20,
+        "scale": 2
       },
       "components": [
         {
-          "type": "EnemyController",
-          "accel": 100,
-          "maxspeed": 2
+          "type": "SpriteRenderer"
         },
         {
-          "type": "SpriteRenderer",
-          "textureName": "textures/enemy.png"
+          "type": "flEnemyController",
+          "accel": 30,
+          "maxspeed": 0.3
         },
         {
-          "type": "RigidBody",
-          "damping": 0.5,
-          "velocity": [
-            0,
-            0
+          "type": "Animator",
+          "animations": [
+            {
+              "name": "idle",
+              "texture_animation": "animations/bat_idle.json"
+            }
           ]
         },
         {
-          "type": "CircleCollider2d",
-          "radius": 30
+          "type": "RigidBody",
+          "gravityScale": 0.0,
+          "constrainAngle": true,
+          "shape": "circle",
+          "scale": [ 1, 1 ],
+          "size": [ 15, 15 ]
+
         }
       ]
     }
-
-
   ]
 }
