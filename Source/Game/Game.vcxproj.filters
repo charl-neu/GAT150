@@ -52,6 +52,9 @@
     <ClCompile Include="EnemyController.cpp">
       <Filter>Source\Platformer</Filter>
     </ClCompile>
+    <ClCompile Include="Flenemy.cpp">
+      <Filter>Source\Platformer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\Enemy.h">
@@ -79,6 +82,9 @@
       <Filter>Source\Platformer</Filter>
     </ClInclude>
     <ClInclude Include="EnemyController.h">
+      <Filter>Source\Platformer</Filter>
+    </ClInclude>
+    <ClInclude Include="flenemy.h">
       <Filter>Source\Platformer</Filter>
     </ClInclude>
   </ItemGroup>

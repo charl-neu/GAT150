@@ -42,6 +42,7 @@ namespace viper {
 		void applyForce(const vec2& force);
 		void applyTorque(float radians);
 		void setVelocity(const vec2& velocity);
+		vec2 Getvelocity();
 	private:
 
 		friend class Physics;

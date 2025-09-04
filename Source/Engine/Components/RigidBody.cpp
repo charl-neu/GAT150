@@ -43,7 +43,7 @@ namespace viper {
 	{
 		owner->transform.position = m_physicsbody->GetPosition();
 		owner->transform.rotation = RadToDeg(m_physicsbody->GetAngle());
-
+		velocity = m_physicsbody->Getvelocity();
 
 	}
 

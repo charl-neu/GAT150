@@ -83,4 +83,6 @@ namespace viper {
 	using std::atanf;
 	using std::atan2f;
 	using std::trunc;
+	using std::abs;
+	using std::fabs;
 }

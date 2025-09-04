@@ -36,6 +36,7 @@ namespace viper {
 		*/
 
 		
+		/*
 		for (auto& actrA : m_actors)
 		{
 			for (auto& actrB : m_actors)
@@ -52,7 +53,7 @@ namespace viper {
 				}
 			}
 		}
-
+		*/
 	}
 
 

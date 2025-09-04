@@ -184,6 +184,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="EnemyController.cpp" />
+    <ClCompile Include="Flenemy.cpp" />
     <ClCompile Include="GamePCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -206,6 +207,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EnemyController.h" />
+    <ClInclude Include="flenemy.h" />
     <ClInclude Include="GamePCH.h" />
     <ClInclude Include="Game\Enemy.h" />
     <ClInclude Include="Game\GameData.h" />

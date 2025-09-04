@@ -14,7 +14,7 @@
       "components": [
         {
           "type": "PlayerController",
-          "accel": 150,
+          "accel": 100,
           "maxspeed": 3,
           "jump":  10,
           "health": 3
@@ -27,7 +27,8 @@
           "type": "RigidBody",
           "gravityScale": 1,
           "angularDamping": 2.0,
-          "constrainAngle":  true,
+          "constrainAngle": true,
+          "isSensor": true,
           "shape": "capsule"
         },
         {
@@ -50,11 +51,8 @@
       "components": [
         {
           "type": "EnemyController",
-          "accel": 150,
-          "angularVel": 90,
-          "firetimer": 3.0,
-          "maxfire": 2.0,
-          "m_score": 100
+          "accel": 100,
+          "maxspeed": 2
         },
         {
           "type": "SpriteRenderer",

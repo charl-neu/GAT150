@@ -27,14 +27,16 @@ namespace viper
 					owner->transform.position.x,
 					owner->transform.position.y,
 					owner->transform.rotation,
-					owner->transform.scale);
+					owner->transform.scale,
+					fliph);
 			}
 			else {
 				renderer.DrawTextureRotated(*texture,
 					owner->transform.position.x,
 					owner->transform.position.y,
 					owner->transform.rotation,
-					owner->transform.scale);
+					owner->transform.scale,
+					fliph);
 			}
 		}
 	}
@@ -44,6 +46,7 @@ namespace viper
 		Object::Read(value);
 
 		JSON_READ(value, textureName);
+		JSON_READ(value, fliph);
 	}
 
 }

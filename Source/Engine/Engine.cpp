@@ -65,6 +65,9 @@ namespace viper
 		m_audio->Update();	
 
 		m_physics->Update(m_time.GetDeltatime());
+		if (m_particleSystem) {
+			m_particleSystem->Update(m_time.GetDeltatime());
+		}
 
 
 	}

@@ -21,6 +21,7 @@
     "openFiles": [
     ],
     "project": "untitled.tiled-project",
+    "property.type": "string",
     "recentFiles": [
         "tilemap.tsx"
     ],

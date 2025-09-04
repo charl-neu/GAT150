@@ -4,6 +4,7 @@ FACTORY_REGISTER(PlayerController)
 
 void PlayerController::onCollision(viper::Actor* other)
 {
+	std::cout << "Collided with " << other->name << std::endl;
 }
 
 void PlayerController::Start()
@@ -28,5 +29,12 @@ void PlayerController::Update(float deltaTime)
 
 	if (viper::GetEngine().GetInputSystem().GetKeyPressed(SDL_SCANCODE_SPACE)) {
 		m_rigidBody->applyForce(viper::vec2{ 0,-1 } * jump * 10000);
+	}
+
+	auto spriteRenderer = owner->GetComponent<viper::SpriteRenderer>();
+	if (spriteRenderer) {
+		if (viper::fabs(m_rigidBody->velocity.x) != 0) {
+			spriteRenderer->fliph = (m_rigidBody->velocity.x < 0);
+		}
 	}
 }

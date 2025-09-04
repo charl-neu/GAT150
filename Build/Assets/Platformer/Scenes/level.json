@@ -18,6 +18,8 @@
       ]
     },
     {
+      "name": "ground_tilemap",
+      "tag": "ground",
       "persistent": true,
       "transform": {
         "position": [
@@ -25,7 +27,7 @@
           0
         ],
         "rotation": 0,
-        "scale": 4
+        "scale": 2
       },
       "components": [
         {
@@ -95,6 +97,11 @@
           "type": "SpriteRenderer"
         },
         {
+          "type": "flEnemyController",
+          "accel": 50,
+          "maxspeed": 1
+        },
+        {
           "type": "Animator",
           "animations": [
             {
@@ -102,6 +109,14 @@
               "texture_animation": "animations/bat_idle.json"
             }
           ]
+        },
+        {
+            "type": "RigidBody",
+            "gravityScale": 0.0,
+            "constrainAngle": true,
+            "shape": "circle",
+            "scale": [ 1, 1 ]
+
         }
       ]
     }
