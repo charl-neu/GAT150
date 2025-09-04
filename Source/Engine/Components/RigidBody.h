@@ -3,7 +3,7 @@
 #include "Game/Component.h"
 #include "../Physics/PhysicsBody.h"
 
-namespace viper {
+namespace nebula {
 
 	class RigidBody : public Component {
 	public:

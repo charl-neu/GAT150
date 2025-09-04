@@ -3,7 +3,7 @@
 #include "../Math/Vector3.h"
 #include <vector>
 
-namespace viper {
+namespace nebula {
 	struct Particle
 	{
 		bool active{ false };

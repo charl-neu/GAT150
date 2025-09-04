@@ -1,10 +1,10 @@
 #include "Tilemap.h"
 
-namespace viper {
+namespace nebula {
 	bool Tilemap::Load(const std::string& filename, class Renderer& renderer) {
 		// load json
-		viper::json::doc_t document;
-		if (!viper::json::Load(filename, document)) {
+		nebula::json::doc_t document;
+		if (!nebula::json::Load(filename, document)) {
 			Logger::Error("Could not load Tilemap json {}", filename);
 			return false;
 		}

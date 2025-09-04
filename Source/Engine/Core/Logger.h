@@ -3,7 +3,7 @@
 #include <iostream>
 #include <format>
 
-namespace viper {
+namespace nebula {
 
 	enum class LogLevel : uint8_t {
 		None = 0,

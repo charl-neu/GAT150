@@ -9,7 +9,7 @@
 #include <string>
 #include <memory>
 
-namespace viper {
+namespace nebula {
 	class Text {
 	public:
 		Text() = default;

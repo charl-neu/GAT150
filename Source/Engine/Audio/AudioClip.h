@@ -1,7 +1,7 @@
 #pragma once
 #include "../Resources/Resource.h"
 
-namespace viper {
+namespace nebula {
 	class AudioClip : public Resource {
 	public:
 		AudioClip() = default;

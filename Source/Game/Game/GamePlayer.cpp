@@ -8,29 +8,29 @@
 FACTORY_REGISTER(Player)
 
 void Player::Start() {
-	m_rigidBody = owner->GetComponent<viper::RigidBody>();
+	m_rigidBody = owner->GetComponent<nebula::RigidBody>();
 }
 
 void Player::Update(float deltaTime)
 {
 	if (m_rigidBody->velocity.Length()) {
-		viper::Particle particle;
+		nebula::Particle particle;
 		particle.position = owner->transform.position;
-		particle.velocity = viper::vec2{ -(m_rigidBody->velocity.x) + viper::random::getReal() * 100 - 50, -(m_rigidBody->velocity.y) + viper::random::getReal() * 100 - 50 };
-		particle.color = viper::vec3{ 1.0f, 1.0f, 1.0f };
-		particle.lifetime = .25f * (viper::random::getReal() * 2);
-		viper::GetEngine().GetParticleSystem().AddParticle(particle);
+		particle.velocity = nebula::vec2{ -(m_rigidBody->velocity.x) + nebula::random::getReal() * 100 - 50, -(m_rigidBody->velocity.y) + nebula::random::getReal() * 100 - 50 };
+		particle.color = nebula::vec3{ 1.0f, 1.0f, 1.0f };
+		particle.lifetime = .25f * (nebula::random::getReal() * 2);
+		nebula::GetEngine().GetParticleSystem().AddParticle(particle);
 	}
 
 
 	float rotate = 0;
 	
 
-	if (viper::GetEngine().GetInputSystem().GetKeyDown(SDL_SCANCODE_A)) {
+	if (nebula::GetEngine().GetInputSystem().GetKeyDown(SDL_SCANCODE_A)) {
 		rotate = -1;
 	}
 
-	if (viper::GetEngine().GetInputSystem().GetKeyDown(SDL_SCANCODE_D)) {
+	if (nebula::GetEngine().GetInputSystem().GetKeyDown(SDL_SCANCODE_D)) {
 		rotate = 1;
 	}
 
@@ -39,32 +39,32 @@ void Player::Update(float deltaTime)
 	m_rigidBody->applyTorque(rotate);
 
 	float thrust = 0;
-	if (viper::GetEngine().GetInputSystem().GetKeyDown(SDL_SCANCODE_W)) {
+	if (nebula::GetEngine().GetInputSystem().GetKeyDown(SDL_SCANCODE_W)) {
 		thrust = 1;
 	}
-	if (viper::GetEngine().GetInputSystem().GetKeyDown(SDL_SCANCODE_S)) {
+	if (nebula::GetEngine().GetInputSystem().GetKeyDown(SDL_SCANCODE_S)) {
 		thrust = -.5;
 	}
 
 
-	viper::vec2 direction{ 1, 0 };
-	viper::vec2 force = direction.Rotate(viper::DegToRad(owner->transform.rotation)) * accel * thrust;
+	nebula::vec2 direction{ 1, 0 };
+	nebula::vec2 force = direction.Rotate(nebula::DegToRad(owner->transform.rotation)) * accel * thrust;
 	if (m_rigidBody) {
 		m_rigidBody->applyForce(force);
 	}
-	owner->transform.position.x = viper::Wrap(owner->transform.position.x, 0.0f, 1280.0f);
-	owner->transform.position.y = viper::Wrap(owner->transform.position.y, 0.0f, 1024.0f);
+	owner->transform.position.x = nebula::Wrap(owner->transform.position.x, 0.0f, 1280.0f);
+	owner->transform.position.y = nebula::Wrap(owner->transform.position.y, 0.0f, 1024.0f);
 
 	
-	if (viper::GetEngine().GetInputSystem().GetKeyPressed(SDL_SCANCODE_SPACE)) {
+	if (nebula::GetEngine().GetInputSystem().GetKeyPressed(SDL_SCANCODE_SPACE)) {
 		if(firetimer <= 0.0f) {
-			auto sound = viper::Resources().Get<viper::AudioClip>("bass.wav", viper::GetEngine().GetAudioSystem());
+			auto sound = nebula::Resources().Get<nebula::AudioClip>("bass.wav", nebula::GetEngine().GetAudioSystem());
 			if (sound) {
-				viper::GetEngine().GetAudioSystem().PlaySound(*sound);
+				nebula::GetEngine().GetAudioSystem().PlaySound(*sound);
 			}
 			
-			viper::Transform transform{ owner->transform.position, owner->transform.rotation, 0.5f };
-			auto rock = viper::Instantiate("Rocketp", transform);
+			nebula::Transform transform{ owner->transform.position, owner->transform.rotation, 0.5f };
+			auto rock = nebula::Instantiate("Rocketp", transform);
 			owner->scene->AddActor(std::move(rock), true);
 
 			firetimer = 0.25f;
@@ -82,14 +82,14 @@ void Player::Update(float deltaTime)
 
 }
 
-void Player::onCollision(viper::Actor* other)
+void Player::onCollision(nebula::Actor* other)
 {
 	if ((other->tag == "enemy" || other->tag == "rockete") && invincibilityTimer < 0) {
 		health--;
 		if (health <= 0) {
 			owner->destroyed = true;
 			invincibilityTimer = 2.0f; // Start invincibility timer
-			viper::EventManager::Instance().Notify(viper::Event{ "Player_dead", true });
+			nebula::EventManager::Instance().Notify(nebula::Event{ "Player_dead", true });
 			//dynamic_cast<SpaceGame*>(owner->scene->GetGame())->OnPlayerDeath();
 		}
 	}

@@ -3,7 +3,7 @@
 #include "../Math/Transform.h"
 #include "../Math/Vector2.h"
 
-namespace viper {
+namespace nebula {
 	class PhysicsBody {
 	public:
 		enum class Shape {

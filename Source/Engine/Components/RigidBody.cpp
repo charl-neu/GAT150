@@ -2,7 +2,7 @@
 #include "SpriteRenderer.h"
 #include "Engine.h"
 
-namespace viper {
+namespace nebula {
 	FACTORY_REGISTER(RigidBody)
 
 	RigidBody::RigidBody(const RigidBody& other)
@@ -47,7 +47,7 @@ namespace viper {
 
 	}
 
-	void RigidBody::Read(const viper::json::value_t& value)
+	void RigidBody::Read(const nebula::json::value_t& value)
 	{
 		Object::Read(value);
 

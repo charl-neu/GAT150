@@ -1,7 +1,7 @@
 #include "Particle System.h"
 #include "Renderer.h"
 
-namespace viper {
+namespace nebula {
 	bool ParticleSystem::Initialize(int poolsize) {
 		m_particles.resize(poolsize); 
 		return true;

@@ -6,7 +6,7 @@
 #include "Event/Event Manager.h"
 #include "Core/Factory.h"
 
-namespace viper
+namespace nebula
 {
 
 
@@ -14,7 +14,7 @@ namespace viper
 	{
 		m_renderer = std::make_unique<Renderer>();
 		m_renderer->Initialize();
-		m_renderer->CreateWindow("Viper Engine", 1280, 1024, false);
+		m_renderer->CreateWindow("nebula Engine", 1280, 1024, false);
 
 		m_input = std::make_unique<InputSystem>();
 		m_input->Initialize();

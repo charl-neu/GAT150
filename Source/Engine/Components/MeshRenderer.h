@@ -2,7 +2,7 @@
 #include "Renderer/Mesh.h"
 #include "RendererComponent.h"
 
-namespace viper {
+namespace nebula {
 
 	class MeshRenderer : public RendererComponent {
 	public:

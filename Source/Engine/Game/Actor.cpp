@@ -2,7 +2,7 @@
 #include "../Renderer/Renderer.h"
 #include "../Components/RendererComponent.h"
 
-namespace viper {
+namespace nebula {
 	FACTORY_REGISTER(Actor)
 
 	Actor::Actor(const Actor& other) : 

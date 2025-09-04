@@ -1,7 +1,7 @@
 #include "Audio System.h"
 #include "AudioClip.h"
 
-namespace viper {
+namespace nebula {
 	/// <summary>
 	/// Checks the FMOD result and prints an error message if the result is not OK.
 	/// </summary>
@@ -54,7 +54,7 @@ namespace viper {
 	/// <param name="filename">The path to the sound file to be loaded.</param>
 	/// <param name="name">The name to associate with the sound. If empty, the filename is used as the key.</param>
 	/// <returns>Returns false if the sound could not be added (e.g., if a sound with the same name already exists or loading fails).</returns>
-	bool viper::AudioSystem::AddSound(const std::string& filename, const std::string& name)
+	bool nebula::AudioSystem::AddSound(const std::string& filename, const std::string& name)
 	{
 		std::string key = name.empty() ? filename : name;
 
@@ -76,7 +76,7 @@ namespace viper {
 		return true;
 	}
 
-	bool viper::AudioSystem::PlaySound(const std::string& name)
+	bool nebula::AudioSystem::PlaySound(const std::string& name)
 	{
 		std::string key = name;
 		for (char c : key) {
@@ -102,5 +102,5 @@ namespace viper {
 		return true;
 	}
 
-} // namespace viper
+} // namespace nebula
 

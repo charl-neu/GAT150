@@ -2,7 +2,7 @@
 #include "Renderer/Tilemap.h"
 #include "Engine.h"
 
-namespace viper {
+namespace nebula {
 	FACTORY_REGISTER(TilemapRenderer)
 
 	TilemapRenderer::TilemapRenderer(const TilemapRenderer& other) {

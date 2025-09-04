@@ -7,7 +7,7 @@
 #include <string>
 #include <memory>
 
-namespace viper {
+namespace nebula {
 	class Actor : public Object {
 	public:
 		std::string tag;

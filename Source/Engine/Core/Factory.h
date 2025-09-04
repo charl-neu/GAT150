@@ -11,12 +11,12 @@
 class Register##classname {         \
     public:                         \
     Register##classname() {           \
-        viper::Factory::Instance().Register<classname>(#classname);\
+        nebula::Factory::Instance().Register<classname>(#classname);\
     }                               \
 };                                  \
 Register##classname register_instance;
 
-namespace viper {
+namespace nebula {
 	class CreatorBase {
 	public:
 		virtual ~CreatorBase() = default;
@@ -79,7 +79,7 @@ namespace viper {
 		m_registry[key] = std::make_unique<Creator<T>>();
 
 		//log registration
-		Logger::Info("Factory: Registered for type: {}", key);
+		//Logger::Info("Factory: Registered for type: {}", key);
 	}
 
 	template<typename T>
@@ -89,7 +89,7 @@ namespace viper {
 		std::string key = toLower(name);
 
 		m_registry[key] = std::make_unique<PrototypeCreator<T>>(std::move(prototype));
-		Logger::Info("Factory: Registered Prototype for type: {}", key);
+		//Logger::Info("Factory: Registered Prototype for type: {}", key);
 	}
 
 	template <typename T>

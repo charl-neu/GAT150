@@ -1,6 +1,6 @@
 #include "CircleCollider2d.h"
 
-namespace viper {
+namespace nebula {
 	FACTORY_REGISTER(CircleCollider2d)
 
 	void CircleCollider2d::Update(float deltaTime)

@@ -1,5 +1,5 @@
 #include "Font.h"
-namespace viper {
+namespace nebula {
 	Font::~Font() {
 		if (m_ttfFont != nullptr) {
 			TTF_CloseFont(m_ttfFont);

@@ -4,7 +4,7 @@
 
 
 
-namespace viper
+namespace nebula
 {
 	void EventManager::AddObserver(const Event::id_t& eventId, IObserver& observer)
 	{

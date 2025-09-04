@@ -9,7 +9,7 @@
 #include <map>
 #include <iostream>
 
-namespace viper
+namespace nebula
 {
 	class ResourceManager : public Singleton<ResourceManager>{
 	public:

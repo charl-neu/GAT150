@@ -5,7 +5,7 @@
 
 #include <vector>
 
-namespace viper {
+namespace nebula {
 	class Mesh : public Resource{
 	public:
 		Mesh() = default;

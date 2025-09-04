@@ -2,7 +2,7 @@
 #include <cassert>
 #include "math.h"
 
-namespace viper {
+namespace nebula {
 	template<typename T>
 	class Vector3
 	{
@@ -38,7 +38,7 @@ namespace viper {
 		Vector3& operator /= (float s) { x /= s; y /= s; y /= s; return *this; }
 
 		float LengthSqr() { return ((x * x) + (y * y)) + (z * z); }
-		float Length() { return viper::sqrtf(LengthSqr()); }
+		float Length() { return nebula::sqrtf(LengthSqr()); }
 	};
 
 	template<typename T>

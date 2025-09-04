@@ -7,14 +7,14 @@
 #include "Math/Vector3.h"
 #include <vector>
 
-#define JSON_READ(value, data) viper::json::Read(value, #data, data)
-#define JSON_READ_NAME(value, name, data) viper::json::Read(value, name, data)
+#define JSON_READ(value, data) nebula::json::Read(value, #data, data)
+#define JSON_READ_NAME(value, name, data) nebula::json::Read(value, name, data)
 
 //end
 #define JSON_HAS(value, data) value.HasMember(#data)
 #define JSON_GET(value, data) value[#data]
 
-namespace viper::json
+namespace nebula::json
 {
 	using value_t = rapidjson::Value;
 	using doc_t = rapidjson::Document;

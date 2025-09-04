@@ -5,7 +5,7 @@
 #include <rapidjson/istreamwrapper.h>
 #include <iostream>
 
-namespace viper::json
+namespace nebula::json
 {
     bool Load(const std::string& filename, doc_t& document) {
         // read the file into a string
@@ -15,7 +15,7 @@ namespace viper::json
             return false;
         }
 
-		Logger::Info("Loading Json file: {}.", filename);
+		//Logger::Info("Loading Json file: {}.", filename);
 
         // convert the string into a json stream
         std::stringstream stream(buffer);

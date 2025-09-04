@@ -3,7 +3,7 @@
 #include "Renderer/Texture.h"
 #include "Engine.h"
 
-namespace viper
+namespace nebula
 {
 	FACTORY_REGISTER(SpriteRenderer)
 

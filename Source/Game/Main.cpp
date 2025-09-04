@@ -3,12 +3,12 @@
 #include "game/GameGame.h"
 #include "PlatformerGame.h"
 
-#define RENDERER viper::GetEngine().GetRenderer()
-#define AUDIO viper::GetEngine().GetAudioSystem()
-#define INPUT viper::GetEngine().GetInputSystem()
-#define TIME viper::GetEngine().GetTime()
-#define PARTICLES viper::GetEngine().GetParticleSystem()
-#define JSON_READ(value, data) viper::json::Read(value, #data, data)
+#define RENDERER nebula::GetEngine().GetRenderer()
+#define AUDIO nebula::GetEngine().GetAudioSystem()
+#define INPUT nebula::GetEngine().GetInputSystem()
+#define TIME nebula::GetEngine().GetTime()
+#define PARTICLES nebula::GetEngine().GetParticleSystem()
+#define JSON_READ(value, data) nebula::json::Read(value, #data, data)
 
 
 
@@ -17,24 +17,24 @@ int main(int argc, char* argv[]) {
 
 
     //set the file path
-    viper::file::SetCurrentDirectory("Assets/Platformer");
+    nebula::file::SetCurrentDirectory("Assets/Platformer");
     
-	auto spriteRenderer = viper::Factory::Instance().Create<viper::SpriteRenderer>("SpriteRenderer");
-	auto meshRenderer = viper::Factory::Instance().Create<viper::MeshRenderer>("MeshRenderer");
+	auto spriteRenderer = nebula::Factory::Instance().Create<nebula::SpriteRenderer>("SpriteRenderer");
+	auto meshRenderer = nebula::Factory::Instance().Create<nebula::MeshRenderer>("MeshRenderer");
 
 
     //init engine
-	viper::GetEngine().Initialize();
+	nebula::GetEngine().Initialize();
 
-	std::unique_ptr<viper::Game> game = std::make_unique<PlatformerGame>();
+	std::unique_ptr<nebula::Game> game = std::make_unique<PlatformerGame>();
 	game->Initialize();
 
 
     //create stars
-    std::vector<viper::vec2> stars;
+    std::vector<nebula::vec2> stars;
     for (int i = 0; i < 100; i++)
     {
-        stars.push_back(viper::vec2{viper::random::getReal() * 1280, viper::random::getReal() * 1024});
+        stars.push_back(nebula::vec2{nebula::random::getReal() * 1280, nebula::random::getReal() * 1024});
     }
 
     SDL_Event e;
@@ -50,7 +50,7 @@ int main(int argc, char* argv[]) {
         }
 
         //update engine systems
-        viper::GetEngine().Update();
+        nebula::GetEngine().Update();
         float dt = TIME.GetDeltatime();
         game->Update(dt);
 		PARTICLES.Update(dt);
@@ -60,7 +60,7 @@ int main(int argc, char* argv[]) {
         if (INPUT.GetKeyPressed(SDL_SCANCODE_ESCAPE)) quit = true;
 
 
-		viper::vec3 color{ 1, 1, 1 };
+		nebula::vec3 color{ 1, 1, 1 };
 
         RENDERER.SetColor(0.0f, 0.0f, 0.0f);
         RENDERER.Clear();
@@ -73,8 +73,8 @@ int main(int argc, char* argv[]) {
             star.x -= 50.0f * dt;
             star.y += 50.0f * dt;
 
-            star.x = viper::Wrap(star.x, 0.0f, 1280.0f);
-            star.y = viper::Wrap(star.y, 0.0f, 1024.0f);
+            star.x = nebula::Wrap(star.x, 0.0f, 1280.0f);
+            star.y = nebula::Wrap(star.y, 0.0f, 1024.0f);
 		}
 
 		game->Draw(RENDERER);
@@ -86,7 +86,7 @@ int main(int argc, char* argv[]) {
     
 	game->Shutdown();
 	game.release();
-	viper::GetEngine().Shutdown();
+	nebula::GetEngine().Shutdown();
 
     return 0;
 }

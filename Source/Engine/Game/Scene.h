@@ -6,7 +6,7 @@
 #include <string>
 #include <list>
 
-namespace viper {
+namespace nebula {
 	class Game;
 
 

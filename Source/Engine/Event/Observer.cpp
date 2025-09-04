@@ -1,8 +1,8 @@
 #include "Observer.h"
 
-namespace viper
+namespace nebula
 {
-	viper::IObserver::~IObserver()
+	nebula::IObserver::~IObserver()
 	{
 		OBSERVER_REMOVE_SELF;
 	}

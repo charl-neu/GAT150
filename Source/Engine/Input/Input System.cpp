@@ -1,7 +1,7 @@
 #include "Input System.h"
 #include <SDL3/SDL.h>
 
-namespace viper {
+namespace nebula {
 	bool InputSystem::Initialize() {
 		int numkeys;
 		const bool* keyboardState = SDL_GetKeyboardState(&numkeys);

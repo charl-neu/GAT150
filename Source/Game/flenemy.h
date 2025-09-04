@@ -4,7 +4,7 @@
 #include "Game/Component.h"
 
 
-class FlEnemyController : public viper::Component, public viper::ICollidable
+class FlEnemyController : public nebula::Component, public nebula::ICollidable
 {
 public:
 	float accel = 200;
@@ -12,7 +12,7 @@ public:
 	float jump = 10.0f;
 	int health = 3;
 
-	viper::RigidBody* m_rigidBody;
+	nebula::RigidBody* m_rigidBody;
 public:
 	FlEnemyController() = default;
 	CLASS_PROTOTYPE(FlEnemyController)
@@ -28,9 +28,9 @@ public:
 
 	void Update(float deltaTime) override;
 
-	void onCollision(viper::Actor* other) override;
+	void onCollision(nebula::Actor* other) override;
 
-	void Read(const viper::json::value_t& value) override {
+	void Read(const nebula::json::value_t& value) override {
 		Object::Read(value);
 
 		JSON_READ(value, accel);

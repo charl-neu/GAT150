@@ -10,7 +10,7 @@
 
 #include <memory>
 
-namespace viper
+namespace nebula
 {
 	class Engine : public Singleton<Engine>{
 	public:

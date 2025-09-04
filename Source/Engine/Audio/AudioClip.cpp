@@ -1,7 +1,7 @@
 #include "AudioClip.h"
 #include "Audio System.h"
 
-namespace viper {
+namespace nebula {
 	AudioClip::~AudioClip()
 	{
 		if (m_sound) m_sound->release();

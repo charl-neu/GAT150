@@ -2,7 +2,7 @@
 #include "Renderer/Renderer.h"
 #include "Actor.h"
 
-namespace viper {
+namespace nebula {
 	/// <summary>
 	/// Updates all actors by calling their Draw method with the given time delta.
 	/// </summary>
@@ -60,9 +60,9 @@ namespace viper {
 	bool Scene::Load(const std::string& filename)
 	{
 		//load json
-		viper::json::doc_t document;
-		if (!viper::json::Load(filename, document)) {
-			viper::Logger::Error("Failed to load scene from file: {}", filename);
+		nebula::json::doc_t document;
+		if (!nebula::json::Load(filename, document)) {
+			nebula::Logger::Error("Failed to load scene from file: {}", filename);
 			return false;
 		}
 		Read(document);

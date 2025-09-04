@@ -4,7 +4,7 @@
 #include "../Math/Vector2.h"
 #include "../Math/Rect.h"
 
-namespace viper {
+namespace nebula {
 	class Texture;
 	class TextureAnimation : public Resource {
 	public:

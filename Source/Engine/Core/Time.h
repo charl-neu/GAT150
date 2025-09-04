@@ -1,7 +1,7 @@
 #pragma once
 #include <chrono>
 
-namespace viper {
+namespace nebula {
 	class Time {
 	private:
 		using clock = std::chrono::high_resolution_clock;

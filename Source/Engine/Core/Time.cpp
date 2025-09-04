@@ -1,6 +1,6 @@
 #include "Time.h"
 
-namespace viper {
+namespace nebula {
 	void Time::Tick()
 	{
 		clock::time_point now = clock::now();

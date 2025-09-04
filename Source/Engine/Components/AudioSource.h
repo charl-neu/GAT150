@@ -2,7 +2,7 @@
 #include "Game/Component.h"
 #include <string>
 
-namespace viper {
+namespace nebula {
 	
 	class AudioSource : public Component
 	{

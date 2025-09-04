@@ -7,24 +7,24 @@ FACTORY_REGISTER(Rocket)
 void Rocket::Update(float deltaTime)
 {
 	
-	viper::vec2 force = viper::vec2{ 1,0 }.Rotate(viper::DegToRad(owner->transform.rotation)) * accel;
-	auto rigidBody = owner->GetComponent<viper::RigidBody>();
+	nebula::vec2 force = nebula::vec2{ 1,0 }.Rotate(nebula::DegToRad(owner->transform.rotation)) * accel;
+	auto rigidBody = owner->GetComponent<nebula::RigidBody>();
 
 	if (rigidBody) {
 		rigidBody->setVelocity(force);
 	}
 
-	owner->transform.position.x = viper::Wrap(owner->transform.position.x, 0.0f, (float) viper::GetEngine().GetRenderer().GetWidth());
-	owner->transform.position.y = viper::Wrap(owner->transform.position.y, 0.0f, (float) viper::GetEngine().GetRenderer().GetHeight());
+	owner->transform.position.x = nebula::Wrap(owner->transform.position.x, 0.0f, (float) nebula::GetEngine().GetRenderer().GetWidth());
+	owner->transform.position.y = nebula::Wrap(owner->transform.position.y, 0.0f, (float) nebula::GetEngine().GetRenderer().GetHeight());
 
-	viper::Particle particle;
+	nebula::Particle particle;
 	particle.position = owner->transform.position;
 	// Thrust particle effect the opposite direction of the rocket's movement
-	particle.velocity = viper::vec2{ -(force.x) + viper::random::getReal() * 50 - 25, -(force.y) + viper::random::getReal() * 50 - 25 };
+	particle.velocity = nebula::vec2{ -(force.x) + nebula::random::getReal() * 50 - 25, -(force.y) + nebula::random::getReal() * 50 - 25 };
 	
-	particle.color = viper::vec3{ 1.0f, 1.0f, 1.0f };
-	particle.lifetime = .1f * viper::random::getReal();
-	viper::GetEngine().GetParticleSystem().AddParticle(particle);
+	particle.color = nebula::vec3{ 1.0f, 1.0f, 1.0f };
+	particle.lifetime = .1f * nebula::random::getReal();
+	nebula::GetEngine().GetParticleSystem().AddParticle(particle);
 
 	
 
@@ -37,7 +37,7 @@ void Rocket::Update(float deltaTime)
 	
 }
 
-void Rocket::onCollision(viper::Actor* other)
+void Rocket::onCollision(nebula::Actor* other)
 {
 	if ((other->tag == "enemy" && owner->name == "Rocketp") || (other->tag == "player" && owner->name == "Rockete")) {
 		owner->destroyed = true;

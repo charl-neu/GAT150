@@ -4,7 +4,7 @@
 #include "Game/Actor.h"
 
 
-namespace viper
+namespace nebula
 {
 	FACTORY_REGISTER(MeshRenderer)
 

@@ -2,7 +2,7 @@
 #include "RendererComponent.h"
 
 
-namespace viper {
+namespace nebula {
 
 	class SpriteRenderer : public RendererComponent {
 	public:

@@ -2,7 +2,7 @@
 #include <sstream>
 
 
-namespace viper::file {
+namespace nebula::file {
     std::string GetCurrentDirectory() {
         std::error_code ec;
 		auto path = std::filesystem::current_path(ec);
@@ -84,7 +84,7 @@ namespace viper::file {
             ss << file.rdbuf();
             // Convert to string
             content = ss.str();
-            std::cout << content << '\n';
+            //std::cout << content << '\n';
         }
         else {
             Logger::Error("Error: Could not open the file.");

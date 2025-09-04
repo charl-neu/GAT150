@@ -1,7 +1,7 @@
 #pragma once
 #include "Game/Component.h"
 #include "Renderer/TextureAnimation.h"
-namespace viper {
+namespace nebula {
 	class Animator : public Component {
 	public:
 		struct TextureAnimInfo {

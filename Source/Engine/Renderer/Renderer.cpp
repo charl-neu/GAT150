@@ -1,7 +1,7 @@
 #include "Renderer.h"
 #include "Texture.h"
 
-namespace viper {
+namespace nebula {
     bool Renderer::Initialize()
     {
 

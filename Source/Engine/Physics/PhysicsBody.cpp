@@ -1,7 +1,7 @@
 #include "PhysicsBody.h"
 #include "Physics.h"
 
-namespace viper {
+namespace nebula {
 	PhysicsBody::PhysicsBody(const Transform& transform, const vec2& size, const PhysicsBodyDef& def, const Physics& physics)
 	{
 		b2BodyDef bodyDef = b2DefaultBodyDef();

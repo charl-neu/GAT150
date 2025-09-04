@@ -1,6 +1,6 @@
 #pragma once
 
-namespace viper {
+namespace nebula {
 	class Tilemap : public Resource {
 	public:
 		struct Layer {

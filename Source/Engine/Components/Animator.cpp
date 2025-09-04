@@ -3,7 +3,7 @@
 #include "Renderer/Renderer.h"
 #include "Renderer/TextureAnimation.h"
 #include "Engine.h"
-namespace viper {
+namespace nebula {
 	FACTORY_REGISTER(Animator)
 		void Animator::Start() {
 		// cache off sprite renderer component, using sprite renderer to draw
@@ -19,7 +19,7 @@ namespace viper {
 					;
 			}
 			else {
-				Logger::Info("Animator animation {}, texture {} loaded", animation.first, animation.second.textureAnimationName);
+				//Logger::Info("Animator animation {}, texture {} loaded", animation.first, animation.second.textureAnimationName);
 			}
 		}
 		// set initial animation, use first map entry

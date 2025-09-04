@@ -4,7 +4,7 @@
 #include <string>
 #include <map>
 
-namespace viper {
+namespace nebula {
 	class AudioSystem {
 	public:
 		bool Initialize();

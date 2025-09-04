@@ -6,7 +6,7 @@
 #include <iostream>
 #include <SDL3/SDL.h>
 
-namespace viper {
+namespace nebula {
 	class Renderer
 	{
 	public:

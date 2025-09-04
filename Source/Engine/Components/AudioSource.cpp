@@ -2,7 +2,7 @@
 #include "Audio/AudioClip.h"
 #include "Engine.h"
 
-namespace viper {
+namespace nebula {
 	FACTORY_REGISTER(AudioSource);
 
 	void AudioSource::Update(float deltaTime)

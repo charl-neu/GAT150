@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <random>
 
-namespace viper::random {
+namespace nebula::random {
     inline std::mt19937& generator() {
         static std::random_device rd;
         static std::mt19937 gen(rd());
@@ -97,7 +97,7 @@ namespace viper::random {
     /// </summary>
     /// <returns></returns>
     inline vec2 onUnitCircle() {
-        float angle = getReal(viper::twopi);
+        float angle = getReal(nebula::twopi);
         vec2 v;
 		v.x = cos(angle);
 		v.y = sin(angle);

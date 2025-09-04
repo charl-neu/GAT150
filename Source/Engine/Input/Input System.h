@@ -3,7 +3,7 @@
 #include <vector>
 #include <array>
 
-namespace viper {
+namespace nebula {
 	class InputSystem {
 	public:
 		enum MouseButton : uint8_t {

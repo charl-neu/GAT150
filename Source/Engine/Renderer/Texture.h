@@ -5,7 +5,7 @@
 
 struct SDL_Texture;
 
-namespace viper{
+namespace nebula{
 	class Texture : public Resource{
 	public: 
 		Texture() = default;

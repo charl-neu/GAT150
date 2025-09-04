@@ -3,7 +3,7 @@
 #include <SDL3/SDL_ttf.h>
 #include <string>
 
-namespace viper {
+namespace nebula {
 
 	class Font : public Resource{
 	public:

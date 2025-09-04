@@ -2,7 +2,7 @@
 #include "../../Engine/Game/Component.h"
 
 
-class Rocket : public viper::Component, public viper::ICollidable
+class Rocket : public nebula::Component, public nebula::ICollidable
 {
 public:
 	float accel = 200;
@@ -12,6 +12,6 @@ public:
 	CLASS_PROTOTYPE(Rocket)
 	
 public:
-	void onCollision(viper::Actor* other);
+	void onCollision(nebula::Actor* other);
 	void Update(float deltaTime) override;
 };

@@ -2,7 +2,7 @@
 #include <string>
 #include <variant>
 
-namespace viper
+namespace nebula
 {
 	struct Event {
 		using id_t = std::string;

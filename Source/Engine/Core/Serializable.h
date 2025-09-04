@@ -1,7 +1,7 @@
 #pragma once
 #include "Json.h"
 
-namespace viper {
+namespace nebula {
 	class ISerializable {
 	public:
 		virtual ~ISerializable() = default;

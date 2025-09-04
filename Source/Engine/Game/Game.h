@@ -1,7 +1,7 @@
 #pragma once
 #include <memory>
 
-namespace viper {
+namespace nebula {
 	class Game
 	{
 	public:

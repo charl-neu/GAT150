@@ -3,7 +3,7 @@
 #include <cassert>
 #include <iostream>
 
-namespace viper {
+namespace nebula {
 	template<typename T>
 	class Vector2
 	{
@@ -47,7 +47,7 @@ namespace viper {
 		/// Calculates the length (magnitude) of a vector.
 		/// </summary>
 		/// <returns>The length of the vector as a floating-point value.</returns>
-		float Length() const { return viper::sqrtf(LengthSqr()); }
+		float Length() const { return nebula::sqrtf(LengthSqr()); }
 
 		/// <summary>
 		/// Returns a normalized (unit length) version of the vector.
@@ -59,12 +59,12 @@ namespace viper {
 		/// Returns the angle, in radians, between the positive x-axis and the point (x, y).
 		/// </summary>
 		/// <returns>The angle in radians, computed using atan2f(y, x).</returns>
-		float Angle() const { return viper::atan2f(y, x); };
+		float Angle() const { return nebula::atan2f(y, x); };
 
 		Vector2 Rotate(float radians) const {
 			Vector2 v;
-			v.x = x * viper::cosf(radians) - y * viper::sinf(radians);
-			v.y = x * viper::sinf(radians) + y * viper::cosf(radians);
+			v.x = x * nebula::cosf(radians) - y * nebula::sinf(radians);
+			v.y = x * nebula::sinf(radians) + y * nebula::cosf(radians);
 
 			return v;
 		}
@@ -96,13 +96,13 @@ namespace viper {
 		/// <param name="b"></param>
 		/// <returns></returns>
 		static float AngleBetween(const Vector2& a, const Vector2& b) {
-			return viper::acosf(Dot(a, b));
+			return nebula::acosf(Dot(a, b));
 		}
 
 		static float SignedAngleBetween(const Vector2& a, const Vector2& b) {
 			float x = Dot(a, b);
 			float y = Cross(a, b);
-			return viper::atan2f(y, x);
+			return nebula::atan2f(y, x);
 		}
 
 	};

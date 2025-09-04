@@ -1,6 +1,6 @@
 #pragma once
 #include "Components/ColliderComponent.h"
-namespace viper
+namespace nebula
 {
 	
 	class CircleCollider2d : public ColliderComponent

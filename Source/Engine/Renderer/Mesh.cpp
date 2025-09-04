@@ -3,7 +3,7 @@
 #include "../Game/Scene.h"
 
 
-namespace viper{
+namespace nebula{
 	/// <summary>
 	/// Attempts to load mesh data from a file.
 	/// </summary>
@@ -45,8 +45,8 @@ namespace viper{
 		renderer.SetColor(m_color.x, m_color.y, m_color.z, 255);
 		for (int i = 0; i < m_points.size()-1; i++)
 		{
-			vec2 p1 = (m_points[i].Rotate(viper::DegToRad(rotation)) * scale) + position;
-			vec2 p2 = (m_points[i + 1].Rotate(viper::DegToRad(rotation)) * scale) + position;
+			vec2 p1 = (m_points[i].Rotate(nebula::DegToRad(rotation)) * scale) + position;
+			vec2 p2 = (m_points[i + 1].Rotate(nebula::DegToRad(rotation)) * scale) + position;
 
 			renderer.DrawLine(p1.x, p1.y, p2.x, p2.y);
 		}

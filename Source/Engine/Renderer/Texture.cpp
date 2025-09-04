@@ -1,7 +1,7 @@
 #include "Texture.h"
 #include "Renderer.h"
 
-namespace viper {
+namespace nebula {
 	Texture::~Texture() {
 		if (m_texture) {
 			SDL_DestroyTexture(m_texture);

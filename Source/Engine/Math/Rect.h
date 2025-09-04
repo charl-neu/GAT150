@@ -1,6 +1,6 @@
 #pragma once
 
-namespace viper {
+namespace nebula {
 
 	template <typename T>
 	struct Rect {

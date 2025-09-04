@@ -5,12 +5,12 @@
 #include <map>
 #include <list>
 
-#define OBSERVER_ADD(event_id)				viper::EventManager::Instance().AddObserver(#event_id, *this)
-#define OBSERVER_REMOVE_SELF				viper::EventManager::Instance().RemoveObserver(*this)
-#define EVENT_NOTIFY_DATA(event_id, data)	viper::EventManager::Instance().Notify({ #event_id, data })
-#define EVENT_NOTIFY(event_id)				viper::EventManager::Instance().Notify({ #event_id, true })
+#define OBSERVER_ADD(event_id)				nebula::EventManager::Instance().AddObserver(#event_id, *this)
+#define OBSERVER_REMOVE_SELF				nebula::EventManager::Instance().RemoveObserver(*this)
+#define EVENT_NOTIFY_DATA(event_id, data)	nebula::EventManager::Instance().Notify({ #event_id, data })
+#define EVENT_NOTIFY(event_id)				nebula::EventManager::Instance().Notify({ #event_id, true })
 
-namespace viper
+namespace nebula
 {
 	class EventManager : public Singleton<EventManager> {
 	public:

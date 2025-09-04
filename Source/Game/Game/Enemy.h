@@ -5,7 +5,7 @@
 #include "../../Engine/Event/Observer.h"
 #include "../../Engine/Event/Event.h"
 
-class Enemy : public viper::Component, public viper::ICollidable, public viper::IObserver
+class Enemy : public nebula::Component, public nebula::ICollidable, public nebula::IObserver
 {
 public:
 	float accel = 200;
@@ -14,17 +14,17 @@ public:
 	float maxfire = 5.0f;
 	int m_points = 100;
 
-	viper::RigidBody* m_rigidBody;
+	nebula::RigidBody* m_rigidBody;
 public:
 	Enemy() = default;
 	CLASS_PROTOTYPE(Enemy)
 
 	void Start() override;
 	void Update(float deltaTime) override;
-	void onCollision(viper::Actor* other) override;
+	void onCollision(nebula::Actor* other) override;
 
 private:
-	void Read(const viper::json::value_t& value) override {
+	void Read(const nebula::json::value_t& value) override {
 		Object::Read(value);
 
 		JSON_READ(value, accel);
@@ -35,5 +35,5 @@ private:
 	}
 
 	// Inherited via IObserver
-	void OnNotify(const viper::Event& event) override;
+	void OnNotify(const nebula::Event& event) override;
 };

@@ -1,7 +1,7 @@
 #pragma once
 #include "Object.h"
 
-namespace viper {
+namespace nebula {
 	class Component : public Object {
 	public:
 		class Actor* owner{ nullptr };

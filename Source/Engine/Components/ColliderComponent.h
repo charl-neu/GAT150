@@ -1,7 +1,7 @@
 #pragma once
 #include "Game/Component.h"
 
-namespace viper
+namespace nebula
 {
 	class ColliderComponent : public Component
 	{

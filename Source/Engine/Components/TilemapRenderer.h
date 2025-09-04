@@ -1,7 +1,7 @@
 #pragma once
 #include "RendererComponent.h"
 
-namespace viper {
+namespace nebula {
 	class TilemapRenderer : public RendererComponent {
 	public:
 		TilemapRenderer() = default;
